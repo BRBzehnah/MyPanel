@@ -35,7 +35,7 @@ namespace MyPanel.Models
 
         public BotModel() { }
 
-        public BotModel(string email, string login, string password, string guardCode, bool isActiveTm, bool isPrime, bool isFarmed, Role role, Rank rank,string tradeLink = null)
+        public BotModel(string email, string login, string password, string guardCode, bool isActiveTm, bool isPrime, bool isFarmed, Role role, Rank rank, string tradeLink = null)
         {
             Email = email;
             Login = login;
