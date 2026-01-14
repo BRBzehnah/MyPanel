@@ -22,7 +22,7 @@ namespace MyPanel.Services
         {
             if (model != null)
             {
-                var newBot = new Bot(model.Email, model.Login, model.Password, model.GuardCode);
+                var newBot = new Bot(model.Email, model.Login, model.Password, model.RestoreCode);
                 _db.Bots.Add(newBot);
                 _db.SaveChanges();
                 return true;
@@ -48,7 +48,7 @@ namespace MyPanel.Services
                 botForUpdate.IsFarmed = model.IsFarmed;
                 botForUpdate.IsActiveTm = model.IsActiveTm;
                 botForUpdate.IsPrime = model.IsPrime;
-                botForUpdate.GuardCode = model.GuardCode;
+                botForUpdate.RestoreCode = model.RestoreCode;
                 botForUpdate.Role = model.Role;
                 botForUpdate.Rank = model.Rank;
 

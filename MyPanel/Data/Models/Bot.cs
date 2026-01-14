@@ -18,7 +18,7 @@ namespace MyPanel.Data.Models
 
         public string Password { get; set; }
 
-        public string GuardCode { get; set; }   /*Код гварда*/
+        public string RestoreCode { get; set; }   /*Код восстановления гварда*/
 
         public string? TradeLink { get; set; }  /*Ссылка на обмен*/
 
@@ -41,7 +41,7 @@ namespace MyPanel.Data.Models
             Email = model.Email;
             Login = model.Login;
             Password = model.Password;
-            GuardCode = model.GuardCode;
+            RestoreCode = model.RestoreCode;
             TradeLink = model.TradeLink;
             IsActiveTm = model.IsActiveTm;
             IsPrime = model.IsPrime;
@@ -55,7 +55,7 @@ namespace MyPanel.Data.Models
             Email = email;
             Login = login;
             Password = password;
-            GuardCode = guardCode;
+            RestoreCode = guardCode;
             TradeLink = tradeLink;
             IsActiveTm = isActiveTm;
             IsPrime = isPrime;
@@ -72,7 +72,7 @@ namespace MyPanel.Data.Models
                 Email = this.Email,
                 Login = this.Login,
                 Password = this.Password,
-                GuardCode = this.GuardCode,
+                RestoreCode = this.RestoreCode,
                 IsActiveTm = this.IsActiveTm,
                 IsPrime = this.IsPrime,
                 IsFarmed = this.IsFarmed,

@@ -12,27 +12,51 @@ namespace MyPanel.APIs.SandboxieAPI
 {
     public class SandboxController
     {
-        [DllImport("kernel32", CharSet = CharSet.Unicode, SetLastError = true)]
+        [DllImport("kernel32", CharSet = CharSet.Unicode, SetLastError = true)]     //Импорт для взаимодействия с конфиг файлом песочниц
         private static extern bool WritePrivateProfileString(string Section, string Key, string Value, string FilePath);
+
+        [DllImport("user32.dll", SetLastError = true)]      //Импорт для взаимодейтсвия с окнами
+        internal static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
+
+        [DllImport("user32.dll")]       //Импорт для получения информации о разрешении
+        static extern int GetSystemMetrics(int nIndex);
+
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]       //Импорт для поиска окна
+        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+        [DllImport("user32.dll")]       //Импорт для определения заголовка окна
+        static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
+
+        [DllImport("user32.dll")]       //Импорт для получения всех окон
+        static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
+
+        public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
+
 
         private readonly string _iniPath;
         private readonly string _sbiePath;
         private readonly string _appPath;
         private readonly string[] _boxesNames;
+        private readonly int _wndWidth;
+        private readonly int _wndHeight;
+        private readonly int _screenWidth = GetSystemMetrics(0);
+        private readonly int _screenHeight = GetSystemMetrics(1);
 
         public SandboxController(int countOfBoxes)
         {
             _sbiePath = @"C:\Program Files\Sandboxie-Plus\Start.exe";
             _iniPath = @"C:\Windows\SbieCtrl.ini";
             _appPath = @"C:\Users\obvin\Desktop\Counter-Strike 2.url";
+            _wndWidth = 808;
+            _wndHeight = 600;
 
             if (!File.Exists(_sbiePath))
                 throw new FileNotFoundException("Sandboxie Start.exe не найден!");
             if (!IsUserAdministrator())
                 MessageBox.Show("ВНИМАНИЕ: Запустите программу от имени администратора");
 
-            _boxesNames = SetBoxes(countOfBoxes);
-            ConfigureSandbox();
+            _boxesNames = CreateBoxes(countOfBoxes);
+            GetConfig();
         }
         private bool IsUserAdministrator()
         {
@@ -42,7 +66,7 @@ namespace MyPanel.APIs.SandboxieAPI
                 return principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
             }
         }
-        private string[] SetBoxes(int countOfBoxes)
+        private string[] CreateBoxes(int countOfBoxes)
         {
             string[] boxes = new string[countOfBoxes];
 
@@ -53,7 +77,7 @@ namespace MyPanel.APIs.SandboxieAPI
 
             return boxes;
         }
-        private void ConfigureSandbox()
+        private void GetConfig()
         {
             foreach (var box in _boxesNames)
             {
@@ -65,13 +89,56 @@ namespace MyPanel.APIs.SandboxieAPI
             Process.Start(_sbiePath, "/reload").WaitForExit();
         }
 
-        public async Task RunIsolatedTasks()
+
+        public void GetPlaceForBox()
+        {
+            int x = 0;
+            int y = 0;
+            for (int i = 0; i < _boxesNames.Length; i++)
+            {
+                IntPtr currentWindow = FindWindow(_boxesNames[i]);
+                if (currentWindow != IntPtr.Zero)
+                {
+                    x = i * _wndWidth;
+                    if (x > _screenWidth)
+                    {
+                        y +=_wndHeight;
+                        x = 0;
+                    }
+
+                    MoveWindow(currentWindow, x, y, _wndWidth, _wndHeight, true);
+                }
+            } 
+        }
+        public IntPtr FindWindow(string boxName)
+        {
+            IntPtr foundHandle = IntPtr.Zero;
+
+            EnumWindows((hWnd, lParam) =>
+            {
+                StringBuilder sb = new StringBuilder(256);
+                GetWindowText(hWnd, sb, sb.Capacity);
+                string title = sb.ToString();
+
+                if (title.Contains(boxName))
+                {
+                    foundHandle = hWnd;
+                    return false;
+                }
+                return true;
+            }, IntPtr.Zero);
+
+            return foundHandle;
+        }
+
+        public async Task RunBoxes()
         {
             List<Task> tasks = new List<Task>();
 
-            foreach (var box in _boxesNames)
-            { 
-                var currentBox = box;
+            for (int i = 0; i < _boxesNames.Length; i++)
+            {
+                var currentBox = _boxesNames[i];
+
                 tasks.Add(Task.Run(() =>
                 {
                     string args = $"/box:{currentBox} /wait {_appPath}";
@@ -84,10 +151,8 @@ namespace MyPanel.APIs.SandboxieAPI
                         UseShellExecute = false
                     };
 
-                    using (Process p = Process.Start(psi))
-                    {
-                        p?.WaitForExit();
-                    }
+                    Process.Start(psi);
+                    Task.Delay(5000);
                 })
                 );
             }

@@ -18,7 +18,7 @@ namespace MyPanel.Models
 
         public string Password { get; set; }
 
-        public string GuardCode { get; set; }  
+        public string RestoreCode { get; set; }  
 
         public string? TradeLink { get; set; } 
 
@@ -35,12 +35,12 @@ namespace MyPanel.Models
 
         public BotModel() { }
 
-        public BotModel(string email, string login, string password, string guardCode, bool isActiveTm, bool isPrime, bool isFarmed, Role role, Rank rank, string tradeLink = null)
+        public BotModel(string email, string login, string password, string restoreCode, bool isActiveTm, bool isPrime, bool isFarmed, Role role, Rank rank, string tradeLink = null)
         {
             Email = email;
             Login = login;
             Password = password;
-            GuardCode = guardCode;
+            RestoreCode = restoreCode;
             TradeLink = tradeLink;
             IsActiveTm = isActiveTm;
             IsPrime = isPrime;
