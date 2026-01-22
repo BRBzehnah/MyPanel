@@ -18,6 +18,10 @@ namespace MyPanel.Data.Models
 
         public string Password { get; set; }
 
+        public string MaFilePath { get; set; }
+
+        public string PhoneNumber { get; set; }
+
         public string RestoreCode { get; set; }   /*Код восстановления гварда*/
 
         public string? TradeLink { get; set; }  /*Ссылка на обмен*/
@@ -50,12 +54,12 @@ namespace MyPanel.Data.Models
             Rank = model.Rank;
         }
 
-        public Bot(string email, string login, string password, string guardCode, bool isActiveTm = false, bool isPrime = false, bool isFarmed = false, Role role = Role.Worker, Rank rank = Rank.None, string tradeLink = null)
+        public Bot(string email, string login, string password, string restoreCode, string maFilePath, bool isActiveTm = false, bool isPrime = false, bool isFarmed = false, Role role = Role.Worker, Rank rank = Rank.None, string tradeLink = null)
         {
             Email = email;
             Login = login;
             Password = password;
-            RestoreCode = guardCode;
+            RestoreCode = restoreCode;
             TradeLink = tradeLink;
             IsActiveTm = isActiveTm;
             IsPrime = isPrime;

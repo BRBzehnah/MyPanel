@@ -73,6 +73,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.11, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.4, )"
+            },
+            "SteamKit2": {
+              "target": "Package",
+              "version": "[3.4.0, )"
             }
           },
           "imports": [

@@ -20,10 +20,18 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="SteamKit2" Version="3.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SteamAuth">
+      <HintPath>SteamAuth.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -22,7 +22,7 @@ namespace MyPanel.Services
         {
             if (model != null)
             {
-                var newBot = new Bot(model.Email, model.Login, model.Password, model.RestoreCode);
+                var newBot = new Bot(model.Email, model.Login, model.Password, model.RestoreCode, model.MaFilePath);
                 _db.Bots.Add(newBot);
                 _db.SaveChanges();
                 return true;

@@ -146,3 +146,10 @@ C:\Users\obvin\Desktop\MyPanel\MyPanel\bin\Debug\net8.0-windows\runtimes\win-arm
 C:\Users\obvin\Desktop\MyPanel\MyPanel\bin\Debug\net8.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\obvin\Desktop\MyPanel\MyPanel\bin\Debug\net8.0-windows\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\obvin\Desktop\MyPanel\MyPanel\obj\Debug\net8.0-windows\MyPanel.sourcelink.json
+C:\Users\obvin\Desktop\MyPanel\MyPanel\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\obvin\Desktop\MyPanel\MyPanel\bin\Debug\net8.0-windows\SteamAuth.dll
+C:\Users\obvin\Desktop\MyPanel\MyPanel\bin\Debug\net8.0-windows\protobuf-net.dll
+C:\Users\obvin\Desktop\MyPanel\MyPanel\bin\Debug\net8.0-windows\protobuf-net.Core.dll
+C:\Users\obvin\Desktop\MyPanel\MyPanel\bin\Debug\net8.0-windows\SteamKit2.dll
+C:\Users\obvin\Desktop\MyPanel\MyPanel\bin\Debug\net8.0-windows\System.IO.Hashing.dll
+C:\Users\obvin\Desktop\MyPanel\MyPanel\bin\Debug\net8.0-windows\ZstdSharp.dll

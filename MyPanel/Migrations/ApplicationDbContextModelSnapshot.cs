@@ -17,17 +17,13 @@ namespace MyPanel.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.11");
 
-            modelBuilder.Entity("MyPanel.Models.Bot", b =>
+            modelBuilder.Entity("MyPanel.Data.Models.Bot", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("GuardCode")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -44,12 +40,24 @@ namespace MyPanel.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("MaFilePath")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Rank")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("RestoreCode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Role")
                         .HasColumnType("INTEGER");
@@ -62,7 +70,7 @@ namespace MyPanel.Migrations
                     b.ToTable("Bots");
                 });
 
-            modelBuilder.Entity("MyPanel.Models.Drop", b =>
+            modelBuilder.Entity("MyPanel.Data.Models.Drop", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -84,16 +92,16 @@ namespace MyPanel.Migrations
                     b.ToTable("Drops");
                 });
 
-            modelBuilder.Entity("MyPanel.Models.Drop", b =>
+            modelBuilder.Entity("MyPanel.Data.Models.Drop", b =>
                 {
-                    b.HasOne("MyPanel.Models.Bot", null)
+                    b.HasOne("MyPanel.Data.Models.Bot", null)
                         .WithMany("Drop")
                         .HasForeignKey("BotId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MyPanel.Models.Bot", b =>
+            modelBuilder.Entity("MyPanel.Data.Models.Bot", b =>
                 {
                     b.Navigation("Drop");
                 });

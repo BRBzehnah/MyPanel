@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xUWs12o2Opw=",
+  "dgSpecHash": "KWKVS5ewrfg=",
   "success": true,
   "projectFilePath": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\MyPanel.csproj",
   "expectedPackageFiles": [
@@ -34,10 +34,14 @@
     "C:\\Users\\obvin\\.nuget\\packages\\microsoft.extensions.options\\9.0.11\\microsoft.extensions.options.9.0.11.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.11\\microsoft.extensions.primitives.9.0.11.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\mono.texttemplating\\3.0.0\\mono.texttemplating.3.0.0.nupkg.sha512",
+    "C:\\Users\\obvin\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512",
+    "C:\\Users\\obvin\\.nuget\\packages\\protobuf-net\\3.2.56\\protobuf-net.3.2.56.nupkg.sha512",
+    "C:\\Users\\obvin\\.nuget\\packages\\protobuf-net.core\\3.2.56\\protobuf-net.core.3.2.56.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.10\\sqlitepclraw.bundle_e_sqlite3.2.1.10.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\sqlitepclraw.core\\2.1.10\\sqlitepclraw.core.2.1.10.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.10\\sqlitepclraw.lib.e_sqlite3.2.1.10.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.10\\sqlitepclraw.provider.e_sqlite3.2.1.10.nupkg.sha512",
+    "C:\\Users\\obvin\\.nuget\\packages\\steamkit2\\3.4.0\\steamkit2.3.4.0.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\system.codedom\\6.0.0\\system.codedom.6.0.0.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\system.collections.immutable\\7.0.0\\system.collections.immutable.7.0.0.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\system.composition\\7.0.0\\system.composition.7.0.0.nupkg.sha512",
@@ -47,13 +51,15 @@
     "C:\\Users\\obvin\\.nuget\\packages\\system.composition.runtime\\7.0.0\\system.composition.runtime.7.0.0.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\system.composition.typedparts\\7.0.0\\system.composition.typedparts.7.0.0.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\system.diagnostics.diagnosticsource\\9.0.11\\system.diagnostics.diagnosticsource.9.0.11.nupkg.sha512",
+    "C:\\Users\\obvin\\.nuget\\packages\\system.io.hashing\\10.0.1\\system.io.hashing.10.0.1.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\system.io.pipelines\\9.0.11\\system.io.pipelines.9.0.11.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\system.reflection.metadata\\7.0.0\\system.reflection.metadata.7.0.0.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\system.text.encodings.web\\9.0.11\\system.text.encodings.web.9.0.11.nupkg.sha512",
     "C:\\Users\\obvin\\.nuget\\packages\\system.text.json\\9.0.11\\system.text.json.9.0.11.nupkg.sha512",
-    "C:\\Users\\obvin\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512"
+    "C:\\Users\\obvin\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
+    "C:\\Users\\obvin\\.nuget\\packages\\zstdsharp.port\\0.8.7\\zstdsharp.port.0.8.7.nupkg.sha512"
   ],
   "logs": []
 }
