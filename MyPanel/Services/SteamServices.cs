@@ -57,11 +57,11 @@ namespace MyPanel.Services
             };
         }
 
-        public async Task<string> CreateMaFile(string username, string password, string phone)
+        public async Task<string> CreateMaFile(string username, string password, string phoneNumber)
         {
             var session = await GetSession(username, password);
             AuthenticatorLinker linker = new AuthenticatorLinker(session);
-            linker.PhoneNumber = phone;
+            linker.PhoneNumber = phoneNumber;
 
             var result = await linker.AddAuthenticator();
 
@@ -80,11 +80,18 @@ namespace MyPanel.Services
             return null;
         }
 
-        // В воркере (Get2FACode принимает строку)
-        public string Get2FACode(string maFileJson)
+        public string GetGuardCode(string maFileJson)
         {
             var account = JsonConvert.DeserializeObject<SteamGuardAccount>(maFileJson);
             return account.GenerateSteamGuardCode();
+        }
+
+        public string GetRestoreCode(string maFile)
+        {
+            if (string.IsNullOrEmpty(maFile)) return "";
+
+            var account = JsonConvert.DeserializeObject<SteamGuardAccount>(maFile);
+            return account?.RevocationCode ?? "";
         }
     }
 }

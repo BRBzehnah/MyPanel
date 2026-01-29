@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using MyPanel.Models;
 using System.Windows;
 
-namespace MyPanel.Bots
+namespace MyPanel.Controllers
 {
     public class BotWorker
     {
@@ -31,5 +31,7 @@ namespace MyPanel.Bots
             string password = _botServices.Read(_botId).Password;
 
         }
+
+
     }
 }

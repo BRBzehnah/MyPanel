@@ -18,9 +18,7 @@ namespace MyPanel.Data.Models
 
         public string Password { get; set; }
 
-        public string MaFilePath { get; set; }
-
-        public string PhoneNumber { get; set; }
+        public string MaFile { get; set; }
 
         public string RestoreCode { get; set; }   /*Код восстановления гварда*/
 
@@ -54,11 +52,12 @@ namespace MyPanel.Data.Models
             Rank = model.Rank;
         }
 
-        public Bot(string email, string login, string password, string restoreCode, string maFilePath, bool isActiveTm = false, bool isPrime = false, bool isFarmed = false, Role role = Role.Worker, Rank rank = Rank.None, string tradeLink = null)
+        public Bot(string email, string login, string password, string restoreCode = null, string maFile = null, bool isActiveTm = false, bool isPrime = false, bool isFarmed = false, Role role = Role.Worker, Rank rank = Rank.None, string tradeLink = null)
         {
             Email = email;
             Login = login;
             Password = password;
+            MaFile = maFile;
             RestoreCode = restoreCode;
             TradeLink = tradeLink;
             IsActiveTm = isActiveTm;
@@ -76,6 +75,7 @@ namespace MyPanel.Data.Models
                 Email = this.Email,
                 Login = this.Login,
                 Password = this.Password,
+                MaFile = this.MaFile,
                 RestoreCode = this.RestoreCode,
                 IsActiveTm = this.IsActiveTm,
                 IsPrime = this.IsPrime,
