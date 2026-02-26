@@ -159,6 +159,10 @@ namespace MyPanel.APIs.SandboxieAPI
 
             await Task.WhenAll(tasks);
         }
+
+        public async Task Run()
+
+
         public void Cleanup()
         {
             foreach (var box in _boxesNames)

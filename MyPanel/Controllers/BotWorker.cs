@@ -14,21 +14,17 @@ namespace MyPanel.Controllers
 {
     public class BotWorker
     {
-        private readonly DbContext _db;
-        private readonly BotServices _botServices;
-        private readonly int _botId;
+        private readonly BotModel _bot;
+        private readonly IntPtr _window;
         public BotWorker() { }
-        public BotWorker(DbContext db, BotServices botServices, int botId) 
+        public BotWorker(BotModel bot, IntPtr window) 
         {
-            _botServices = botServices;
-            _botId = botId;
-            _db = db;
+            _bot = bot;
+            _window = window;
         }
 
         public void Authorize()
         {
-            string login = _botServices.Read(_botId).Login;
-            string password = _botServices.Read(_botId).Password;
 
         }
 
