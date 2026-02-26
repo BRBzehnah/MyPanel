@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPanel.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -33,14 +34,14 @@ namespace MyPanel.APIs.SandboxieAPI
         public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
 
 
-        private readonly string _iniPath;
-        private readonly string _sbiePath;
-        private readonly string _appPath;
+        private readonly string _iniPath = ConfigManager.Instance.Config.Path.IniPath;
+        private readonly string _sbiePath = ConfigManager.Instance.Config.Path.SandboxiePath;
+        private readonly string _appPath = ConfigManager.Instance.Config.Path.AppPath;
         private readonly string[] _boxesNames;
-        private readonly int _wndWidth;
-        private readonly int _wndHeight;
-        private readonly int _screenWidth = GetSystemMetrics(0);
-        private readonly int _screenHeight = GetSystemMetrics(1);
+        private readonly int _wndWidth = ConfigManager.Instance.Config.SizeOf.WindowWidth;
+        private readonly int _wndHeight = ConfigManager.Instance.Config.SizeOf.WindowHeight;
+        private readonly int _screenWidth = ConfigManager.Instance.Config.SizeOf.MonitorWidth;
+        private readonly int _screenHeight = ConfigManager.Instance.Config.SizeOf.MonitorHeight;
 
         public SandboxController(int countOfBoxes)
         {
@@ -160,7 +161,7 @@ namespace MyPanel.APIs.SandboxieAPI
             await Task.WhenAll(tasks);
         }
 
-        public async Task Run()
+        //public async Task Run()
 
 
         public void Cleanup()
