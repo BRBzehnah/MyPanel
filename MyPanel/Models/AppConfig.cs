@@ -17,6 +17,7 @@ namespace MyPanel.Models
         public string AppPath { get; set; } = "";
         public string SandboxiePath { get; set; } = "";
         public string IniPath { get; set; } = "";
+        public string AgentExePath { get; set; } = "";
     }
     public class SizeOf
     {

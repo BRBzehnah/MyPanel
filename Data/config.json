@@ -1,0 +1,15 @@
+{
+  "Path": {
+    "AppPath": "",
+    "SandboxiePath": "",
+    "AgentExePath": "",
+    "IniPath": "C:/Windows/Sandboxie.ini"
+  },
+  "SizeOf": {
+    "WindowWidth": "800",
+    "WindowHeight": "600",
+    "MonitorWidth": "",
+    "MonitorHeigth": ""
+
+  }
+}

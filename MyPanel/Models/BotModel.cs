@@ -2,6 +2,7 @@
 using MyPanel.Services;
 using System;
 using System.Collections.Generic;
+using System.IO.Pipes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,10 @@ namespace MyPanel.Models
         public Role Role { get; set; }
 
         public Rank Rank { get; set; }
+
+        public NamedPipeServerStream? PipeServer { get; set; }
+
+        public string BoxName { get; set; }
 
 
         public BotModel() { }

@@ -1,4 +1,5 @@
 ﻿using MyPanel.Controllers;
+using MyPanel.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -38,26 +39,27 @@ namespace MyPanel.APIs.SandboxieAPI
         private readonly string _sbiePath = ConfigManager.Instance.Config.Path.SandboxiePath;
         private readonly string _appPath = ConfigManager.Instance.Config.Path.AppPath;
         private readonly string[] _boxesNames;
+        private List<string> _boxes = new List<string>();
         private readonly int _wndWidth = ConfigManager.Instance.Config.SizeOf.WindowWidth;
         private readonly int _wndHeight = ConfigManager.Instance.Config.SizeOf.WindowHeight;
         private readonly int _screenWidth = ConfigManager.Instance.Config.SizeOf.MonitorWidth;
         private readonly int _screenHeight = ConfigManager.Instance.Config.SizeOf.MonitorHeight;
 
-        public SandboxController(int countOfBoxes)
+        public SandboxController()
         {
-            _sbiePath = @"C:\Program Files\Sandboxie-Plus\Start.exe";
-            _iniPath = @"C:\Windows\SbieCtrl.ini";
-            _appPath = @"C:\Users\obvin\Desktop\Counter-Strike 2.url";
-            _wndWidth = 808;
-            _wndHeight = 600;
+            //_sbiePath = @"C:\Program Files\Sandboxie-Plus\Start.exe";
+            //_iniPath = @"C:\Windows\SbieCtrl.ini";
+            //_appPath = @"C:\Users\obvin\Desktop\Counter-Strike 2.url";
+            //_wndWidth = 800;
+            //_wndHeight = 600;
 
             if (!File.Exists(_sbiePath))
                 throw new FileNotFoundException("Sandboxie Start.exe не найден!");
             if (!IsUserAdministrator())
                 MessageBox.Show("ВНИМАНИЕ: Запустите программу от имени администратора");
 
-            _boxesNames = CreateBoxes(countOfBoxes);
-            GetConfig();
+            //_boxesNames = CreateBoxes(countOfBoxes);
+            //Configurate();
         }
         private bool IsUserAdministrator()
         {
@@ -78,16 +80,17 @@ namespace MyPanel.APIs.SandboxieAPI
 
             return boxes;
         }
-        private void GetConfig()
+        private bool Configurate(string box)
         {
-            foreach (var box in _boxesNames)
+            if (WritePrivateProfileString(box, "Enabled", "y", _iniPath) &&
+                WritePrivateProfileString(box, "AutoDelete", "y", _iniPath) &&
+                WritePrivateProfileString(box, "ConfigLevel", "9", _iniPath) &&
+                WritePrivateProfileString(box, "OpenPipePath", @"\Device\NamedPipe\bot_*", _iniPath))
             {
-                WritePrivateProfileString(box, "Enabled", "y", _iniPath);
-                WritePrivateProfileString(box, "AutoDelete", "y", _iniPath);
-                WritePrivateProfileString(box, "ConfigLevel", "9", _iniPath);
+                Process.Start(_sbiePath, "/reload").WaitForExit();
+                return true;
             }
-            
-            Process.Start(_sbiePath, "/reload").WaitForExit();
+            return false;
         }
 
 
@@ -132,37 +135,37 @@ namespace MyPanel.APIs.SandboxieAPI
             return foundHandle;
         }
 
-        public async Task RunBoxes()
+        public async Task<bool> CreateBox(BotModel bot)
         {
-            List<Task> tasks = new List<Task>();
-
-            for (int i = 0; i < _boxesNames.Length; i++)
+            string boxName = $"Sandbox {bot.Id}";
+            if (Configurate(boxName))
             {
-                var currentBox = _boxesNames[i];
-
-                tasks.Add(Task.Run(() =>
-                {
-                    string args = $"/box:{currentBox} /wait {_appPath}";
-
-                    ProcessStartInfo psi = new ProcessStartInfo
-                    {
-                        FileName = _sbiePath,
-                        Arguments = args,
-                        CreateNoWindow = true,
-                        UseShellExecute = false
-                    };
-
-                    Process.Start(psi);
-                    Task.Delay(5000);
-                })
-                );
+                _boxes.Add(boxName);
+                bot.BoxName = boxName;
+                return true;
             }
-
-            await Task.WhenAll(tasks);
+            return false;
         }
 
-        //public async Task Run()
+        public async Task<bool> RunBox(string args)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = ConfigManager.Instance.Config.Path.SandboxiePath,
+                    Arguments = args,
+                    CreateNoWindow = true,
+                    UseShellExecute = false
+                });
 
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
 
         public void Cleanup()
         {
