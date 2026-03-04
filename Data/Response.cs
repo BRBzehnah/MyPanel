@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyPanel.Communication
 {
-    enum Answer
+    public enum Response
     {
         Success,
         Failure

@@ -1,4 +1,5 @@
-﻿using MyPanel.Data.Models;
+﻿using Data;
+using MyPanel.Data.Models;
 using MyPanel.Services;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,8 @@ namespace MyPanel.Models
         public Rank Rank { get; set; }
 
         public NamedPipeServerStream? PipeServer { get; set; }
+
+        public PipeStatus PipeStatus { get; set; }
 
         public string BoxName { get; set; }
 

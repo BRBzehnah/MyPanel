@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MyPanel.Communication
 {
-    enum Command
+    public enum Command
     {
+        DoConnect
     }
 }

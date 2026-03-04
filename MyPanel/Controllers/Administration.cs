@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Data;
+using Microsoft.EntityFrameworkCore;
 using MyPanel.APIs.SandboxieAPI;
+using MyPanel.Communication;
 using MyPanel.Data;
 using MyPanel.Models;
 using MyPanel.Services;
@@ -21,6 +23,8 @@ namespace MyPanel.Controllers
         private readonly BotServices _bs;
         private readonly SandboxController _sbc;
         private readonly SteamServices _ss;
+        private List<BotModel> Bots { get; set; }
+
         public Administration()
         {
             _db = new ApplicationDbContext();
@@ -58,7 +62,8 @@ namespace MyPanel.Controllers
 
         public async Task Start(List<BotModel> bots)
         {
-            foreach (var bot in bots)
+            Bots = bots;
+            foreach (var bot in Bots)
             {
                 string pipeName = $"bot_{bot.Id}_pipe";
                 string agentExePath = ConfigManager.Instance.Config.Path.AgentExePath;
@@ -74,11 +79,11 @@ namespace MyPanel.Controllers
                 string args = $"/box:{bot.BoxName} {agentExePath} --pipe {pipeName}";
 
                 if (await _sbc.RunBox(args))
-                    _ = Task.Run(() => HandleAgentCommunication(bot));
-                
+                    _ = Task.Run(() => AgentCommunication(bot));
             }
         }
-        private async Task HandleAgentCommunication(BotModel bot)
+
+        private async Task AgentCommunication(BotModel bot)
         {
             try
             {
@@ -87,29 +92,51 @@ namespace MyPanel.Controllers
                 using var reader = new StreamReader(bot.PipeServer);
                 using var writer = new StreamWriter(bot.PipeServer) { AutoFlush = true };
 
-                //Console.WriteLine($"[Bot {bot.Id}] Агент успешно подключен и готов к работе.");
+                if (await Handshake(reader, writer))
+                    bot.PipeStatus = PipeStatus.Connected;
 
-                //// Пример: отправляем команду на запуск игры сразу после подключения
-                //await writer.WriteLineAsync("START_GAME");
+                while (Bots.Any(b => b.PipeStatus != PipeStatus.Connected))
+                {
+                    await Task.Delay(100);
+                }
 
-                //// Цикл прослушивания статусов от агента
-                //while (bot.PipeServer.IsConnected)
-                //{
-                //    var status = await reader.ReadLineAsync();
-                //    if (status != null)
-                //    {
-                //        Console.WriteLine($"[Bot {bot.Id}] Статус: {status}");
-                //        // Здесь можно обновлять UI или БД на основе данных от агента
-                //    }
-                //}
+                await CommandHandler(reader, writer, bot);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[Bot {bot.Id}] Ошибка связи: {ex.Message}");
+
             }
             finally
             {
-                bot.PipeServer?.Dispose();
+               bot.PipeServer?.Dispose();
+            }
+        }
+
+        private static async Task<bool> Handshake(StreamReader reader, StreamWriter writer)
+        {
+            string response =  await reader.ReadLineAsync();
+            if (response != null)
+            {
+                if (response == PipeStatus.Ready.ToString())
+                {
+                    await writer.WriteLineAsync(Command.DoConnect.ToString());
+                    if(await reader.ReadLineAsync() == PipeStatus.Connected.ToString())
+                        return true;
+                }
+            }
+            return false;
+        }
+
+        private static async Task CommandHandler(StreamReader reader, StreamWriter writer, BotModel bot)
+        {
+            // Цикл прослушивания статусов от агента
+            while (bot.PipeServer.IsConnected)
+            {
+                var response = await reader.ReadLineAsync();
+                if (response != null)
+                {
+
+                }
             }
         }
     }
