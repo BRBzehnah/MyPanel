@@ -8,6 +8,7 @@ namespace MyPanel.Communication
 {
     public enum Command
     {
-        DoConnect
+        DoConnect,
+        OpenApp
     }
 }

@@ -4,6 +4,8 @@ using System.Text;
 using System.IO.Pipes;
 using Data;
 using MyPanel.Communication;
+using Data.Config;
+using System.Diagnostics;
 
 namespace Agent
 {
@@ -19,24 +21,26 @@ namespace Agent
             }
 
             // Логика обработки команд от Панели
-            private static async Task Execute(string command, StreamWriter writer)
+            private static async Task Execute(string command, StreamWriter writer, StreamReader reader)
             {
-                switch (command)
+                if (Enum.TryParse(command, out Command cmd))
                 {
-                    case "START_GAME":
-                        // Здесь будет логика запуска Steam/Игры
-                        await writer.WriteLineAsync("STATUS|GAME_LAUNCHING");
-                        break;
+                    switch (cmd)
+                    {
+                        case Command.OpenApp:
+                            if (await OpenApp())
+                                await writer.WriteLineAsync(Response.Success.ToString());
+                            else
+                                await writer.WriteLineAsync(Response.Failure.ToString());
+                            break;
 
-                    case "MOVE_FORWARD":
-                        // Здесь будет эмуляция нажатия клавиши 'W'
-                        await writer.WriteLineAsync("STATUS|MOVING");
-                        break;
-
-                    default:
-                        await writer.WriteLineAsync("ERROR|UNKNOWN_COMMAND");
-                        break;
+                        default:
+                            await writer.WriteLineAsync(Response.Error.ToString());
+                            break;
+                    }
                 }
+                else
+                    await writer.WriteLineAsync(Response.Failure.ToString());
             }
 
             static async Task Main(string[] args)
@@ -64,7 +68,7 @@ namespace Agent
 
                             if (command != null)
                             {
-                                await Execute(command, writer);
+                                await Execute(command, writer, reader);
                             }
                         }
                     }
@@ -81,18 +85,38 @@ namespace Agent
 
             private static async Task<bool> Handshake(StreamReader reader, StreamWriter writer)
             {
-                await writer.WriteLineAsync(PipeStatus.Ready.ToString());
+                await writer.WriteLineAsync(Response.Ready.ToString());
                 
                 string verification = await reader.ReadLineAsync();
                 if (verification != null)
                 {
                     if (verification == Command.DoConnect.ToString())
                     {
-                        await writer.WriteLineAsync(PipeStatus.Connected.ToString());
+                        await writer.WriteLineAsync(Response.Connected.ToString());
                         return true;
                     }
                 }
                 return false;
+            }
+
+            private static async Task<bool> OpenApp()
+            {
+                var appPath = ConfigManager.Instance.Config.Path.AppPath;
+
+                try
+                {
+                    Process.Start(new ProcessStartInfo()
+                    {
+                        FileName = appPath,
+                        UseShellExecute = true,
+                        WorkingDirectory = System.IO.Path.GetDirectoryName(appPath)
+                    });
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+                return true;
             }
         }
     }

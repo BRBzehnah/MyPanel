@@ -781,6 +781,10 @@
         }
       },
       "Data/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.4",
+          "SteamKit2": "3.4.0"
+        },
         "runtime": {
           "Data.dll": {
             "assemblyVersion": "1.0.0.0",

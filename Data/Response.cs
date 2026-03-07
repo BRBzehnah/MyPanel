@@ -9,6 +9,9 @@ namespace MyPanel.Communication
     public enum Response
     {
         Success,
-        Failure
+        Failure,
+        Ready,
+        Connected,
+        Error
     }
 }

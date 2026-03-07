@@ -1,4 +1,4 @@
-﻿using MyPanel.Controllers;
+﻿using Data.Config;
 using MyPanel.Models;
 using System;
 using System.Collections.Generic;

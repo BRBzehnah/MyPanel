@@ -10,3 +10,4 @@ C:\Users\obvin\Desktop\MyPanel\Data\obj\Debug\net10.0\Data.dll
 C:\Users\obvin\Desktop\MyPanel\Data\obj\Debug\net10.0\refint\Data.dll
 C:\Users\obvin\Desktop\MyPanel\Data\obj\Debug\net10.0\Data.pdb
 C:\Users\obvin\Desktop\MyPanel\Data\obj\Debug\net10.0\ref\Data.dll
+C:\Users\obvin\Desktop\MyPanel\Data\obj\Debug\net10.0\Data.csproj.AssemblyReference.cache

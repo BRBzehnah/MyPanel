@@ -1,4 +1,5 @@
 ﻿using Data;
+using Data.Config;
 using Microsoft.EntityFrameworkCore;
 using MyPanel.APIs.SandboxieAPI;
 using MyPanel.Communication;
@@ -93,9 +94,9 @@ namespace MyPanel.Controllers
                 using var writer = new StreamWriter(bot.PipeServer) { AutoFlush = true };
 
                 if (await Handshake(reader, writer))
-                    bot.PipeStatus = PipeStatus.Connected;
+                    bot.PipeStatus = Response.Connected;
 
-                while (Bots.Any(b => b.PipeStatus != PipeStatus.Connected))
+                while (Bots.Any(b => b.PipeStatus != Response.Connected))
                 {
                     await Task.Delay(100);
                 }
@@ -117,10 +118,10 @@ namespace MyPanel.Controllers
             string response =  await reader.ReadLineAsync();
             if (response != null)
             {
-                if (response == PipeStatus.Ready.ToString())
+                if (response == Response.Ready.ToString())
                 {
                     await writer.WriteLineAsync(Command.DoConnect.ToString());
-                    if(await reader.ReadLineAsync() == PipeStatus.Connected.ToString())
+                    if(await reader.ReadLineAsync() == Response.Connected.ToString())
                         return true;
                 }
             }

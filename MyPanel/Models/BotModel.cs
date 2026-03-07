@@ -1,4 +1,5 @@
 ﻿using Data;
+using MyPanel.Communication;
 using MyPanel.Data.Models;
 using MyPanel.Services;
 using System;
@@ -38,7 +39,7 @@ namespace MyPanel.Models
 
         public NamedPipeServerStream? PipeServer { get; set; }
 
-        public PipeStatus PipeStatus { get; set; }
+        public Response PipeStatus { get; set; }
 
         public string BoxName { get; set; }
 

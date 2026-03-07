@@ -3,52 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\obvin\\Desktop\\MyPanel\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\controllers\\administration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\controllers\\administration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{97C695A3-ADFA-4B3E-A4D4-F596A9B48939}|Agent\\Agent.csproj|c:\\users\\obvin\\desktop\\mypanel\\agent\\programm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97C695A3-ADFA-4B3E-A4D4-F596A9B48939}|Agent\\Agent.csproj|solutionrelative:agent\\programm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|c:\\users\\obvin\\desktop\\mypanel\\data\\pipestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|solutionrelative:data\\pipestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|c:\\users\\obvin\\desktop\\mypanel\\data\\command.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|solutionrelative:data\\command.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\apis\\sandboxieapi\\sandboxcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\apis\\sandboxieapi\\sandboxcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\controllers\\configmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\controllers\\configmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\models\\botmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\models\\botmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|c:\\users\\obvin\\desktop\\mypanel\\data\\response.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|solutionrelative:data\\response.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\controllers\\administration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\controllers\\administration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\models\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\models\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|c:\\users\\obvin\\desktop\\mypanel\\data\\config\\configmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|solutionrelative:data\\config\\configmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\mypanel.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\mypanel.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|c:\\users\\obvin\\desktop\\mypanel\\data\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|solutionrelative:data\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\data\\models\\bot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\data\\models\\bot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\apis\\sandboxieapi\\sandboxcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\apis\\sandboxieapi\\sandboxcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,123 +30,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Bot.cs",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Data\\Models\\Bot.cs",
-              "RelativeDocumentMoniker": "MyPanel\\Data\\Models\\Bot.cs",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Data\\Models\\Bot.cs",
-              "RelativeToolTip": "MyPanel\\Data\\Models\\Bot.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAA2wEoAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T09:01:21.407Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Command.cs",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\Command.cs",
-              "RelativeDocumentMoniker": "Data\\Command.cs",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\Command.cs",
-              "RelativeToolTip": "Data\\Command.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T05:51:00.673Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PipeStatus.cs",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\PipeStatus.cs",
-              "RelativeDocumentMoniker": "Data\\PipeStatus.cs",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\PipeStatus.cs",
-              "RelativeToolTip": "Data\\PipeStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T05:49:12.079Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Response.cs",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\Response.cs",
-              "RelativeDocumentMoniker": "Data\\Response.cs",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\Response.cs",
-              "RelativeToolTip": "Data\\Response.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T05:47:21.739Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "MyPanel.csproj",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\MyPanel.csproj",
-              "RelativeDocumentMoniker": "MyPanel\\MyPanel.csproj",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\MyPanel.csproj",
-              "RelativeToolTip": "MyPanel\\MyPanel.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-03T10:15:00.85Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Programm.cs",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\Agent\\Programm.cs",
-              "RelativeDocumentMoniker": "Agent\\Programm.cs",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\Agent\\Programm.cs",
-              "RelativeToolTip": "Agent\\Programm.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAFUAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T09:42:22.761Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "BotModel.cs",
               "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Models\\BotModel.cs",
               "RelativeDocumentMoniker": "MyPanel\\Models\\BotModel.cs",
               "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Models\\BotModel.cs",
               "RelativeToolTip": "MyPanel\\Models\\BotModel.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAwwCUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAawCwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T07:38:07.06Z",
+              "WhenOpened": "2026-03-07T12:40:03.97Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Administration.cs",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Controllers\\Administration.cs",
-              "RelativeDocumentMoniker": "MyPanel\\Controllers\\Administration.cs",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Controllers\\Administration.cs",
-              "RelativeToolTip": "MyPanel\\Controllers\\Administration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T06:53:15.245Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "ConfigManager.cs",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Controllers\\ConfigManager.cs",
-              "RelativeDocumentMoniker": "MyPanel\\Controllers\\ConfigManager.cs",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Controllers\\ConfigManager.cs",
-              "RelativeToolTip": "MyPanel\\Controllers\\ConfigManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAAJAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\Config\\ConfigManager.cs",
+              "RelativeDocumentMoniker": "Data\\Config\\ConfigManager.cs",
+              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\Config\\ConfigManager.cs",
+              "RelativeToolTip": "Data\\Config\\ConfigManager.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T09:42:00.268Z",
+              "WhenOpened": "2026-03-07T12:37:16.56Z",
               "EditorCaption": ""
             },
             {
@@ -185,35 +66,35 @@
               "RelativeDocumentMoniker": "MyPanel\\APIs\\SandboxieAPI\\SandboxController.cs",
               "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\APIs\\SandboxieAPI\\SandboxController.cs",
               "RelativeToolTip": "MyPanel\\APIs\\SandboxieAPI\\SandboxController.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAQwCMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T09:25:40.376Z",
+              "WhenOpened": "2026-03-07T12:36:51.792Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "config.json",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\config.json",
-              "RelativeDocumentMoniker": "Data\\config.json",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\config.json",
-              "RelativeToolTip": "Data\\config.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-03T10:17:34.347Z",
+              "DocumentIndex": 0,
+              "Title": "Programm.cs",
+              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\Agent\\Programm.cs",
+              "RelativeDocumentMoniker": "Agent\\Programm.cs",
+              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\Agent\\Programm.cs",
+              "RelativeToolTip": "Agent\\Programm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHIAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T09:42:22.761Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AppConfig.cs",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Models\\AppConfig.cs",
-              "RelativeDocumentMoniker": "MyPanel\\Models\\AppConfig.cs",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Models\\AppConfig.cs",
-              "RelativeToolTip": "MyPanel\\Models\\AppConfig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA2AAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Administration.cs",
+              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Controllers\\Administration.cs",
+              "RelativeDocumentMoniker": "MyPanel\\Controllers\\Administration.cs",
+              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Controllers\\Administration.cs",
+              "RelativeToolTip": "MyPanel\\Controllers\\Administration.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAArwGAAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T10:21:45.771Z",
+              "WhenOpened": "2026-03-03T06:53:15.245Z",
               "EditorCaption": ""
             }
           ]

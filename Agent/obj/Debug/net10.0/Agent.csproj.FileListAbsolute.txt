@@ -17,3 +17,9 @@ C:\Users\obvin\Desktop\MyPanel\Agent\obj\Debug\net10.0\refint\Agent.dll
 C:\Users\obvin\Desktop\MyPanel\Agent\obj\Debug\net10.0\Agent.pdb
 C:\Users\obvin\Desktop\MyPanel\Agent\obj\Debug\net10.0\Agent.genruntimeconfig.cache
 C:\Users\obvin\Desktop\MyPanel\Agent\obj\Debug\net10.0\ref\Agent.dll
+C:\Users\obvin\Desktop\MyPanel\Agent\bin\Debug\net10.0\Newtonsoft.Json.dll
+C:\Users\obvin\Desktop\MyPanel\Agent\bin\Debug\net10.0\protobuf-net.dll
+C:\Users\obvin\Desktop\MyPanel\Agent\bin\Debug\net10.0\protobuf-net.Core.dll
+C:\Users\obvin\Desktop\MyPanel\Agent\bin\Debug\net10.0\SteamKit2.dll
+C:\Users\obvin\Desktop\MyPanel\Agent\bin\Debug\net10.0\System.IO.Hashing.dll
+C:\Users\obvin\Desktop\MyPanel\Agent\bin\Debug\net10.0\ZstdSharp.dll
