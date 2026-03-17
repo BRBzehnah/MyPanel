@@ -12,8 +12,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipes;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml.Linq;
 
 namespace MyPanel.Controllers
@@ -76,11 +78,34 @@ namespace MyPanel.Controllers
                     1,
                     PipeTransmissionMode.Byte,
                     PipeOptions.Asynchronous);
+                var connectionTask = bot.PipeServer.WaitForConnectionAsync();
 
                 string args = $"/box:{bot.BoxName} {agentExePath} --pipe {pipeName}";
 
                 if (await _sbc.RunBox(args))
-                    _ = Task.Run(() => AgentCommunication(bot));
+                {
+                    _ = Task.Run(async () =>
+                    {
+                        try
+                        {
+                            await connectionTask;
+                            await AgentCommunication(bot);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"[Panel] Ошибка связи: {ex.Message}");
+                        }
+                    });
+
+                }
+                //Ожидание подключения до закрытия метода
+                for (int i = 0; i < 150; i++)
+                {
+                    if (Bots.All(b => b.PipeStatus == Response.Connected))
+                        break;
+                    await Task.Delay(100);
+                }
+
             }
         }
 
@@ -88,7 +113,8 @@ namespace MyPanel.Controllers
         {
             try
             {
-                await bot.PipeServer.WaitForConnectionAsync();
+                if (bot.PipeServer == null || !bot.PipeServer.IsConnected)
+                    return;
 
                 using var reader = new StreamReader(bot.PipeServer);
                 using var writer = new StreamWriter(bot.PipeServer) { AutoFlush = true };

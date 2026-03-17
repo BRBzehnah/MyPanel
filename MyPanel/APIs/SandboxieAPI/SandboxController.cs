@@ -47,19 +47,10 @@ namespace MyPanel.APIs.SandboxieAPI
 
         public SandboxController()
         {
-            //_sbiePath = @"C:\Program Files\Sandboxie-Plus\Start.exe";
-            //_iniPath = @"C:\Windows\SbieCtrl.ini";
-            //_appPath = @"C:\Users\obvin\Desktop\Counter-Strike 2.url";
-            //_wndWidth = 800;
-            //_wndHeight = 600;
-
             if (!File.Exists(_sbiePath))
                 throw new FileNotFoundException("Sandboxie Start.exe не найден!");
             if (!IsUserAdministrator())
                 MessageBox.Show("ВНИМАНИЕ: Запустите программу от имени администратора");
-
-            //_boxesNames = CreateBoxes(countOfBoxes);
-            //Configurate();
         }
         private bool IsUserAdministrator()
         {
@@ -85,7 +76,8 @@ namespace MyPanel.APIs.SandboxieAPI
             if (WritePrivateProfileString(box, "Enabled", "y", _iniPath) &&
                 WritePrivateProfileString(box, "AutoDelete", "y", _iniPath) &&
                 WritePrivateProfileString(box, "ConfigLevel", "9", _iniPath) &&
-                WritePrivateProfileString(box, "OpenPipePath", @"\Device\NamedPipe\bot_*", _iniPath))
+                WritePrivateProfileString(box, "OpenPipePath", @"\Device\NamedPipe\bot_*", _iniPath) &&
+                WritePrivateProfileString(box, "DropAdminRights", "n", _iniPath))
             {
                 Process.Start(_sbiePath, "/reload").WaitForExit();
                 return true;

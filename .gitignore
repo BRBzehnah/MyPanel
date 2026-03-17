@@ -1,3 +1,6 @@
 Database.db
 config.json
 /Test/
+[Bb]in/
+[Oo]bj/
+.exe
