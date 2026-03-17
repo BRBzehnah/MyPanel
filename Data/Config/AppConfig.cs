@@ -9,10 +9,10 @@ namespace Data.Config
 {
     public class AppConfig
     {
-        public Path Path { get; set; }
-        public SizeOf SizeOf { get; set; }
+        public Paths Paths { get; set; } = new Paths();
+        public SizeOf SizeOf { get; set; } = new SizeOf();
     }
-    public class Path
+    public class Paths
     {
         public string AppPath { get; set; } = "";
         public string SandboxiePath { get; set; } = "";

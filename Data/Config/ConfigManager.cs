@@ -11,7 +11,7 @@ namespace Data.Config
 {
     public class ConfigManager
     {
-        private readonly string _cfgPath = "config.json";
+        private readonly string _cfgPath = @"C:\Users\obvin\Desktop\MyPanel\Data\Config\config.json";
         private static readonly object _lock = new object();
         private static ConfigManager _instance;
 
@@ -19,13 +19,6 @@ namespace Data.Config
         private ConfigManager()
         {
             Load();
-
-            string sbiePath = @"C:\Program Files\Sandboxie-Plus\Start.exe";
-            if(File.Exists(sbiePath))
-                Config.Path.SandboxiePath = sbiePath;
-            string iniPath = @"C:\Windows\SbieCtrl.ini";
-            if (File.Exists(iniPath))
-                Config.Path.IniPath = iniPath;
         }
         public static ConfigManager Instance
         {
@@ -70,17 +63,17 @@ namespace Data.Config
         }
         public void SetAppPath(string path)
         {
-            Config.Path.AppPath = path;
+            Config.Paths.AppPath = path;
             Save();
         }
         public void SetSandboxiePath(string path)
         {
-            Config.Path.SandboxiePath = path;
+            Config.Paths.SandboxiePath = path;
             Save();
         }
         public void SetIniPath(string path)
         {
-            Config.Path.IniPath = path;
+            Config.Paths.IniPath = path;
             Save();
         }
     }

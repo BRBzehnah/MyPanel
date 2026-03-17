@@ -29,22 +29,24 @@ namespace Agent
                     {
                         case Command.OpenApp:
                             if (await OpenApp())
-                                await writer.WriteLineAsync(Response.Success.ToString());
+                                await SendMessege(writer, Response.Success);
                             else
-                                await writer.WriteLineAsync(Response.Failure.ToString());
+                                await SendMessege(writer, Response.Failure);
                             break;
 
                         default:
-                            await writer.WriteLineAsync(Response.Error.ToString());
+                            await SendMessege(writer, Response.Error);
                             break;
                     }
                 }
                 else
-                    await writer.WriteLineAsync(Response.Failure.ToString());
+                    await SendMessege(writer, Response.Failure);
             }
 
             static async Task Main(string[] args)
             {
+                Console.WriteLine("[Agent] Запущен");
+
                 string pipeName = GetArgument(args, "--pipe") ?? "default_bot_pipe";
 
                 //Console.WriteLine($"[Agent] Запуск для бота {login}. Подключение к {pipeName}...");
@@ -56,22 +58,29 @@ namespace Agent
                     // Пытаемся подключиться (ждем до 10 секунд)
                     await client.ConnectAsync(10000);
 
-                    using var reader = new StreamReader(client);
-                    using var writer = new StreamWriter(client) { AutoFlush = true };
-
-                    if (await Handshake(reader, writer))
+                    if (client.IsConnected)
                     {
-                        // 3. Основной цикл прослушивания команд
-                        while (client.IsConnected)
-                        {
-                            string? command = await reader.ReadLineAsync();
+                        Console.WriteLine("[Agent] Подключено");
+                        using var reader = new StreamReader(client);
+                        using var writer = new StreamWriter(client) { AutoFlush = true };
 
-                            if (command != null)
+                        if (await Handshake(reader, writer))
+                        {
+                            Console.WriteLine("[Agent] Совершено рукопожатие");
+
+                            // 3. Основной цикл прослушивания команд
+                            while (client.IsConnected)
                             {
-                                await Execute(command, writer, reader);
+                                string? command = await reader.ReadLineAsync();
+
+                                if (command != null)
+                                {
+                                    await Execute(command, writer, reader);
+                                }
                             }
                         }
                     }
+
                 }
                 catch (Exception ex)
                 {
@@ -80,6 +89,7 @@ namespace Agent
                 finally
                 {
                     Console.WriteLine("[Agent] Завершение работы.");
+                    Console.ReadLine();
                 }
             }
 
@@ -99,9 +109,15 @@ namespace Agent
                 return false;
             }
 
+            private static async Task SendMessege(StreamWriter writer, Response response)
+            {
+                await writer.WriteLineAsync(response.ToString());
+                await writer.FlushAsync();
+            }
+
             private static async Task<bool> OpenApp()
             {
-                var appPath = ConfigManager.Instance.Config.Path.AppPath;
+                var appPath = ConfigManager.Instance.Config.Paths.AppPath;
 
                 try
                 {

@@ -35,9 +35,9 @@ namespace MyPanel.APIs.SandboxieAPI
         public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
 
 
-        private readonly string _iniPath = ConfigManager.Instance.Config.Path.IniPath;
-        private readonly string _sbiePath = ConfigManager.Instance.Config.Path.SandboxiePath;
-        private readonly string _appPath = ConfigManager.Instance.Config.Path.AppPath;
+        private readonly string _iniPath = ConfigManager.Instance.Config.Paths.IniPath;
+        private readonly string _sbiePath = ConfigManager.Instance.Config.Paths.SandboxiePath;
+        private readonly string _appPath = ConfigManager.Instance.Config.Paths.AppPath;
         private readonly string[] _boxesNames;
         private List<string> _boxes = new List<string>();
         private readonly int _wndWidth = ConfigManager.Instance.Config.SizeOf.WindowWidth;
@@ -137,7 +137,7 @@ namespace MyPanel.APIs.SandboxieAPI
 
         public async Task<bool> CreateBox(BotModel bot)
         {
-            string boxName = $"Sandbox {bot.Id}";
+            string boxName = $"Sandbox_{bot.Id}";
             if (Configurate(boxName))
             {
                 _boxes.Add(boxName);
@@ -153,7 +153,7 @@ namespace MyPanel.APIs.SandboxieAPI
             {
                 Process.Start(new ProcessStartInfo
                 {
-                    FileName = ConfigManager.Instance.Config.Path.SandboxiePath,
+                    FileName = ConfigManager.Instance.Config.Paths.SandboxiePath,
                     Arguments = args,
                     CreateNoWindow = true,
                     UseShellExecute = false

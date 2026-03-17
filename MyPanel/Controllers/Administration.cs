@@ -67,7 +67,7 @@ namespace MyPanel.Controllers
             foreach (var bot in Bots)
             {
                 string pipeName = $"bot_{bot.Id}_pipe";
-                string agentExePath = ConfigManager.Instance.Config.Path.AgentExePath;
+                string agentExePath = ConfigManager.Instance.Config.Paths.AgentExePath;
                 await _sbc.CreateBox(bot);
 
                 bot.PipeServer = new NamedPipeServerStream(
@@ -94,7 +94,10 @@ namespace MyPanel.Controllers
                 using var writer = new StreamWriter(bot.PipeServer) { AutoFlush = true };
 
                 if (await Handshake(reader, writer))
+                {
+                    Console.WriteLine("подключено");
                     bot.PipeStatus = Response.Connected;
+                }
 
                 while (Bots.Any(b => b.PipeStatus != Response.Connected))
                 {
@@ -120,7 +123,7 @@ namespace MyPanel.Controllers
             {
                 if (response == Response.Ready.ToString())
                 {
-                    await writer.WriteLineAsync(Command.DoConnect.ToString());
+                    await SendMessege(writer, Command.DoConnect);
                     if(await reader.ReadLineAsync() == Response.Connected.ToString())
                         return true;
                 }
@@ -139,6 +142,12 @@ namespace MyPanel.Controllers
 
                 }
             }
+        }
+
+        private static async Task SendMessege(StreamWriter writer, Command command)
+        {
+            await writer.WriteLineAsync(command.ToString());
+            await writer.FlushAsync();
         }
     }
 }
