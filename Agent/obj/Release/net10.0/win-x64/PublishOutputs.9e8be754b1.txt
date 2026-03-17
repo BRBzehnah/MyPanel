@@ -1,3 +1,0 @@
-C:\Users\obvin\Desktop\MyPanel\Agent\bin\Release\net10.0\publish\win-x64\Agent.pdb
-C:\Users\obvin\Desktop\MyPanel\Agent\bin\Release\net10.0\publish\win-x64\Data.pdb
-C:\Users\obvin\Desktop\MyPanel\Agent\bin\Release\net10.0\publish\win-x64\Agent.exe
