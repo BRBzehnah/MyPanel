@@ -14,6 +14,8 @@ namespace MyPanel.Data.Models
 
         public string Email { get; set; }
 
+        public string EmailPassword { get; set; }
+
         public string Login { get; set; }
 
         public string Password { get; set; }
@@ -41,6 +43,7 @@ namespace MyPanel.Data.Models
         public Bot(BotModel model) 
         { 
             Email = model.Email;
+            EmailPassword = model.EmailPassword;
             Login = model.Login;
             Password = model.Password;
             RestoreCode = model.RestoreCode;
@@ -52,11 +55,12 @@ namespace MyPanel.Data.Models
             Rank = model.Rank;
         }
 
-        public Bot(string email, string login, string password, string restoreCode = null, string maFile = null, bool isActiveTm = false, bool isPrime = false, bool isFarmed = false, Role role = Role.Worker, Rank rank = Rank.None, string tradeLink = null)
+        public Bot(string email, string login, string password, string emailPassword = null, string restoreCode = null, string maFile = null, bool isActiveTm = false, bool isPrime = false, bool isFarmed = false, Role role = Role.Worker, Rank rank = Rank.None, string tradeLink = null)
         {
             Email = email;
             Login = login;
             Password = password;
+            EmailPassword = emailPassword;
             MaFile = maFile;
             RestoreCode = restoreCode;
             TradeLink = tradeLink;
@@ -67,12 +71,12 @@ namespace MyPanel.Data.Models
             Rank = rank;
         }
 
-
         public BotModel ToDto()
         {
             return new BotModel
             {
                 Email = this.Email,
+                EmailPassword = this.EmailPassword,
                 Login = this.Login,
                 Password = this.Password,
                 MaFile = this.MaFile,

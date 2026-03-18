@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyPanel.Communication
 {
-    public enum Command
+    public enum Commands
     {
         DoConnect,
         OpenApp

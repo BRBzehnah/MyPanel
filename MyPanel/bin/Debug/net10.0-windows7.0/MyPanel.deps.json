@@ -9,10 +9,12 @@
       "MyPanel/1.0.0": {
         "dependencies": {
           "Data": "1.0.0",
+          "MailKit": "4.15.1",
           "Microsoft.EntityFrameworkCore": "9.0.11",
           "Microsoft.EntityFrameworkCore.Design": "9.0.11",
           "Microsoft.EntityFrameworkCore.Sqlite": "9.0.11",
           "Microsoft.EntityFrameworkCore.Sqlite.Core": "9.0.11",
+          "MimeKit": "4.15.1",
           "Newtonsoft.Json": "13.0.4",
           "SteamKit2": "3.4.0",
           "SteamAuth": "1.0.0.0"
@@ -21,11 +23,30 @@
           "MyPanel.dll": {}
         }
       },
+      "BouncyCastle.Cryptography/2.6.2": {
+        "runtime": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.6.2.46322"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
             "assemblyVersion": "2.14.0.0",
             "fileVersion": "2.14.1.48190"
+          }
+        }
+      },
+      "MailKit/4.15.1": {
+        "dependencies": {
+          "MimeKit": "4.15.1"
+        },
+        "runtime": {
+          "lib/net10.0/MailKit.dll": {
+            "assemblyVersion": "4.15.0.0",
+            "fileVersion": "4.15.1.0"
           }
         }
       },
@@ -516,6 +537,17 @@
           }
         }
       },
+      "MimeKit/4.15.1": {
+        "dependencies": {
+          "BouncyCastle.Cryptography": "2.6.2"
+        },
+        "runtime": {
+          "lib/net10.0/MimeKit.dll": {
+            "assemblyVersion": "4.15.0.0",
+            "fileVersion": "4.15.1.0"
+          }
+        }
+      },
       "Mono.TextTemplating/3.0.0": {
         "runtime": {
           "lib/net6.0/Mono.TextTemplating.dll": {
@@ -808,12 +840,26 @@
       "serviceable": false,
       "sha512": ""
     },
+    "BouncyCastle.Cryptography/2.6.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7oWOcvnntmMKNzDLsdxAYqApt+AjpRpP2CShjMfIa3umZ42UQMvH0tl1qAliYPNYO6vTdcGMqnRrCPmsfzTI1w==",
+      "path": "bouncycastle.cryptography/2.6.2",
+      "hashPath": "bouncycastle.cryptography.2.6.2.nupkg.sha512"
+    },
     "Humanizer.Core/2.14.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
+    },
+    "MailKit/4.15.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4mLbqTbH3ctd0NlukHjVQbU3ZnNDuCtB6ttNZDLPZLWMA2Dr31rh/eCSTqOwDojUX8zfDOVaxstMgJTE9PwZNA==",
+      "path": "mailkit/4.15.1",
+      "hashPath": "mailkit.4.15.1.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
       "type": "package",
@@ -982,6 +1028,13 @@
       "sha512": "sha512-rtUNSIhbQTv8iSBTFvtg2b/ZUkoqC9qAH9DdC2hr+xPpoZrxiCITci9UR/ELUGUGnGUrF8Xye+tGVRhCxE+4LA==",
       "path": "microsoft.extensions.primitives/9.0.11",
       "hashPath": "microsoft.extensions.primitives.9.0.11.nupkg.sha512"
+    },
+    "MimeKit/4.15.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cxCcQhD0zhboFoG136jJuJtQjNRDJ+BxBm3f2vWn+53bff/CRo+K1mAkWjsW4Wuyy5O22F40MdMG2nRzQu1cJw==",
+      "path": "mimekit/4.15.1",
+      "hashPath": "mimekit.4.15.1.nupkg.sha512"
     },
     "Mono.TextTemplating/3.0.0": {
       "type": "package",

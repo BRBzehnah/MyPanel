@@ -150,3 +150,6 @@ C:\Users\obvin\Desktop\MyPanel\MyPanel\obj\Debug\net10.0-windows7.0\refint\MyPan
 C:\Users\obvin\Desktop\MyPanel\MyPanel\obj\Debug\net10.0-windows7.0\MyPanel.pdb
 C:\Users\obvin\Desktop\MyPanel\MyPanel\obj\Debug\net10.0-windows7.0\MyPanel.genruntimeconfig.cache
 C:\Users\obvin\Desktop\MyPanel\MyPanel\obj\Debug\net10.0-windows7.0\ref\MyPanel.dll
+C:\Users\obvin\Desktop\MyPanel\MyPanel\bin\Debug\net10.0-windows7.0\BouncyCastle.Cryptography.dll
+C:\Users\obvin\Desktop\MyPanel\MyPanel\bin\Debug\net10.0-windows7.0\MailKit.dll
+C:\Users\obvin\Desktop\MyPanel\MyPanel\bin\Debug\net10.0-windows7.0\MimeKit.dll

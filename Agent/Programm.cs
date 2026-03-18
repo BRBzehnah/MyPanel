@@ -23,24 +23,24 @@ namespace Agent
             // Логика обработки команд от Панели
             private static async Task Execute(string command, StreamWriter writer, StreamReader reader)
             {
-                if (Enum.TryParse(command, out Command cmd))
+                if (Enum.TryParse(command, out Commands cmd))
                 {
                     switch (cmd)
                     {
-                        case Command.OpenApp:
+                        case Commands.OpenApp:
                             if (await OpenApp())
-                                await SendMessege(writer, Response.Success);
+                                await writer.WriteLineAsync(Response.Success.ToString());
                             else
-                                await SendMessege(writer, Response.Failure);
+                                await writer.WriteLineAsync(Response.Failure.ToString());
                             break;
 
                         default:
-                            await SendMessege(writer, Response.Error);
+                            await writer.WriteLineAsync(Response.Error.ToString());
                             break;
                     }
                 }
                 else
-                    await SendMessege(writer, Response.Failure);
+                    await writer.WriteLineAsync(Response.Failure.ToString());
             }
 
             static async Task Main(string[] args)
@@ -100,19 +100,13 @@ namespace Agent
                 string verification = await reader.ReadLineAsync();
                 if (verification != null)
                 {
-                    if (verification == Command.DoConnect.ToString())
+                    if (verification == Commands.DoConnect.ToString())
                     {
                         await writer.WriteLineAsync(Response.Connected.ToString());
                         return true;
                     }
                 }
                 return false;
-            }
-
-            private static async Task SendMessege(StreamWriter writer, Response response)
-            {
-                await writer.WriteLineAsync(response.ToString());
-                await writer.FlushAsync();
             }
 
             private static async Task<bool> OpenApp()

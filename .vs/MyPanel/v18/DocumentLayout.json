@@ -3,44 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\obvin\\Desktop\\MyPanel\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|c:\\users\\obvin\\desktop\\mypanel\\data\\config\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|solutionrelative:data\\config\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|c:\\users\\obvin\\desktop\\mypanel\\data\\config\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|solutionrelative:data\\config\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\apis\\sandboxieapi\\sandboxcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\apis\\sandboxieapi\\sandboxcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\controllers\\administration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\controllers\\administration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A8902C73-A005-45F6-96A6-81CCD5F9D33D}|Test\\Test.csproj|c:\\users\\obvin\\desktop\\mypanel\\test\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8902C73-A005-45F6-96A6-81CCD5F9D33D}|Test\\Test.csproj|solutionrelative:test\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97C695A3-ADFA-4B3E-A4D4-F596A9B48939}|Agent\\Agent.csproj|c:\\users\\obvin\\desktop\\mypanel\\agent\\programm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97C695A3-ADFA-4B3E-A4D4-F596A9B48939}|Agent\\Agent.csproj|solutionrelative:agent\\programm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97C695A3-ADFA-4B3E-A4D4-F596A9B48939}|Agent\\Agent.csproj|c:\\users\\obvin\\desktop\\mypanel\\agent\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{97C695A3-ADFA-4B3E-A4D4-F596A9B48939}|Agent\\Agent.csproj|solutionrelative:agent\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|c:\\users\\obvin\\desktop\\mypanel\\data\\config\\configmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{539ACB91-F34F-4C70-AD4B-31F58B32D0B0}|Data\\Data.csproj|solutionrelative:data\\config\\configmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\data\\models\\bot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\data\\models\\bot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\services\\botservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\services\\botservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\models\\botmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\models\\botmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|c:\\users\\obvin\\desktop\\mypanel\\mypanel\\mypanel.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{621FE605-4346-4C33-A0CD-5512DD0D2FC7}|MyPanel\\MyPanel.csproj|solutionrelative:mypanel\\mypanel.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{A8902C73-A005-45F6-96A6-81CCD5F9D33D}|Test\\Test.csproj|c:\\users\\obvin\\desktop\\mypanel\\test\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8902C73-A005-45F6-96A6-81CCD5F9D33D}|Test\\Test.csproj|solutionrelative:test\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,24 +38,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "app.manifest",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\Agent\\app.manifest",
-              "RelativeDocumentMoniker": "Agent\\app.manifest",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\Agent\\app.manifest",
-              "RelativeToolTip": "Agent\\app.manifest",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001203|",
-              "WhenOpened": "2026-03-17T10:06:17.804Z",
+              "DocumentIndex": 2,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "MyPanel\\Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Services\\EmailService.cs",
+              "RelativeToolTip": "MyPanel\\Services\\EmailService.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAABQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T11:25:36.967Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "BotServices.cs",
+              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Services\\BotServices.cs",
+              "RelativeDocumentMoniker": "MyPanel\\Services\\BotServices.cs",
+              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Services\\BotServices.cs",
+              "RelativeToolTip": "MyPanel\\Services\\BotServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T11:21:41.329Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Bot.cs",
+              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Data\\Models\\Bot.cs",
+              "RelativeDocumentMoniker": "MyPanel\\Data\\Models\\Bot.cs",
+              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Data\\Models\\Bot.cs",
+              "RelativeToolTip": "MyPanel\\Data\\Models\\Bot.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAA7wCkAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T11:14:56.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BotModel.cs",
+              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Models\\BotModel.cs",
+              "RelativeDocumentMoniker": "MyPanel\\Models\\BotModel.cs",
+              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Models\\BotModel.cs",
+              "RelativeToolTip": "MyPanel\\Models\\BotModel.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAA7wDUAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T11:12:53.613Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Test.cs",
               "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\Test\\Test.cs",
               "RelativeDocumentMoniker": "Test\\Test.cs",
@@ -80,105 +107,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "MyPanel.csproj",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\MyPanel.csproj",
-              "RelativeDocumentMoniker": "MyPanel\\MyPanel.csproj",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\MyPanel.csproj",
-              "RelativeToolTip": "MyPanel\\MyPanel.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-11T09:19:57.183Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SandboxController.cs",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\APIs\\SandboxieAPI\\SandboxController.cs",
-              "RelativeDocumentMoniker": "MyPanel\\APIs\\SandboxieAPI\\SandboxController.cs",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\APIs\\SandboxieAPI\\SandboxController.cs",
-              "RelativeToolTip": "MyPanel\\APIs\\SandboxieAPI\\SandboxController.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAUwEgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-07T12:36:51.792Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "Programm.cs",
               "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\Agent\\Programm.cs",
               "RelativeDocumentMoniker": "Agent\\Programm.cs",
               "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\Agent\\Programm.cs",
               "RelativeToolTip": "Agent\\Programm.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAAAD4AAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAUwBkAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-03T09:42:22.761Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ConfigManager.cs",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\Config\\ConfigManager.cs",
-              "RelativeDocumentMoniker": "Data\\Config\\ConfigManager.cs",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\Config\\ConfigManager.cs",
-              "RelativeToolTip": "Data\\Config\\ConfigManager.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAiwCcAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T09:36:22.173Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Administration.cs",
               "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Controllers\\Administration.cs",
               "RelativeDocumentMoniker": "MyPanel\\Controllers\\Administration.cs",
               "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Controllers\\Administration.cs",
               "RelativeToolTip": "MyPanel\\Controllers\\Administration.cs",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAAAFsAAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAcwJgAAABbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-03T06:53:15.245Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AppConfig.cs",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\Config\\AppConfig.cs",
-              "RelativeDocumentMoniker": "Data\\Config\\AppConfig.cs",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\Config\\AppConfig.cs",
-              "RelativeToolTip": "Data\\Config\\AppConfig.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T09:33:15.051Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "config.json",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\Config\\config.json",
-              "RelativeDocumentMoniker": "Data\\Config\\config.json",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\Config\\config.json",
-              "RelativeToolTip": "Data\\Config\\config.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-11T08:30:34.761Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "BotModel.cs",
-              "DocumentMoniker": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Models\\BotModel.cs",
-              "RelativeDocumentMoniker": "MyPanel\\Models\\BotModel.cs",
-              "ToolTip": "C:\\Users\\obvin\\Desktop\\MyPanel\\MyPanel\\Models\\BotModel.cs",
-              "RelativeToolTip": "MyPanel\\Models\\BotModel.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAArwD0AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-07T12:40:03.97Z"
             }
           ]
         }

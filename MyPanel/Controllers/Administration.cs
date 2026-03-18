@@ -17,6 +17,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Linq;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace MyPanel.Controllers
 {
@@ -61,6 +62,13 @@ namespace MyPanel.Controllers
                 }
             }
             return false;
+        }
+
+        public async Task<bool> RegistrationByEmail(string email, string login, string password, string emailPassword)
+        {
+            var bot = new BotModel(email,login, password, emailPassword);
+            
+            return _bs.Create(bot);
         }
 
         public async Task Start(List<BotModel> bots)
@@ -149,8 +157,8 @@ namespace MyPanel.Controllers
             {
                 if (response == Response.Ready.ToString())
                 {
-                    await SendMessege(writer, Command.DoConnect);
-                    if(await reader.ReadLineAsync() == Response.Connected.ToString())
+                    await writer.WriteLineAsync(Commands.DoConnect.ToString());
+                    if (await reader.ReadLineAsync() == Response.Connected.ToString())
                         return true;
                 }
             }
@@ -163,17 +171,17 @@ namespace MyPanel.Controllers
             while (bot.PipeServer.IsConnected)
             {
                 var response = await reader.ReadLineAsync();
-                if (response != null)
+                if (Enum.TryParse(response, out Response rsp))
                 {
+                    switch (rsp)
+                    {
 
+                    }
                 }
+                else
+                    MessageBox.Show("Неизвестный ответ агента");
             }
         }
 
-        private static async Task SendMessege(StreamWriter writer, Command command)
-        {
-            await writer.WriteLineAsync(command.ToString());
-            await writer.FlushAsync();
-        }
     }
 }

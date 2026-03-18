@@ -17,6 +17,8 @@ namespace MyPanel.Models
 
         public string Email { get; set; }
 
+        public string EmailPassword { get; set; }
+
         public string Login { get; set; }
 
         public string Password { get; set; }
@@ -46,11 +48,12 @@ namespace MyPanel.Models
 
         public BotModel() { }
 
-        public BotModel(string email, string login, string password, string restoreCode = null, string maFile = null, bool isActiveTm = false, bool isPrime = false, bool isFarmed = false, Role role = Role.Worker, Rank rank = Rank.None, string tradeLink = null)
+        public BotModel(string email, string login, string password, string emailPassword = null, string restoreCode = null, string maFile = null, bool isActiveTm = false, bool isPrime = false, bool isFarmed = false, Role role = Role.Worker, Rank rank = Rank.None, string tradeLink = null)
         {
             Email = email;
             Login = login;
             Password = password;
+            EmailPassword = emailPassword;
             MaFile = maFile;
             RestoreCode = restoreCode;
             TradeLink = tradeLink;
