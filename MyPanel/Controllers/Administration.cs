@@ -109,7 +109,7 @@ namespace MyPanel.Controllers
                 //Ожидание подключения до закрытия метода
                 for (int i = 0; i < 150; i++)
                 {
-                    if (Bots.All(b => b.PipeStatus == Response.Connected))
+                    if (Bots.All(b => b.IsConnected == true))
                         break;
                     await Task.Delay(100);
                 }
@@ -130,10 +130,10 @@ namespace MyPanel.Controllers
                 if (await Handshake(reader, writer))
                 {
                     Console.WriteLine("подключено");
-                    bot.PipeStatus = Response.Connected;
+                    bot.IsConnected = true;
                 }
 
-                while (Bots.Any(b => b.PipeStatus != Response.Connected))
+                while (Bots.Any(b => b.IsConnected != true))
                 {
                     await Task.Delay(100);
                 }

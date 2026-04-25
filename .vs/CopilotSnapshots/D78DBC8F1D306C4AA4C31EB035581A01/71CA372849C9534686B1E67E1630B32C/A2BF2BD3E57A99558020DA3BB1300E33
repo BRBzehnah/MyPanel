@@ -52,19 +52,6 @@ namespace MyPanel.APIs.SandboxieAPI
             if (!IsUserAdministrator())
                 MessageBox.Show("ВНИМАНИЕ: Запустите программу от имени администратора");
         }
-
-        // Protected constructor for tests/derived classes to skip file/admin checks
-        protected SandboxController(bool skipChecks)
-        {
-            // Intentionally empty: field initializers already set fields; skip the startup checks.
-        }
-
-        // Extracted process start so tests can override behavior without launching processes
-        protected virtual Process StartProcess(ProcessStartInfo psi)
-        {
-            return Process.Start(psi);
-        }
-
         private bool IsUserAdministrator()
         {
             using (var identity = System.Security.Principal.WindowsIdentity.GetCurrent())
@@ -184,15 +171,13 @@ namespace MyPanel.APIs.SandboxieAPI
         {
             try
             {
-                var psi = new ProcessStartInfo
+                Process.Start(new ProcessStartInfo
                 {
                     FileName = ConfigManager.Instance.Config.Paths.SandboxiePath,
                     Arguments = args,
                     CreateNoWindow = true,
                     UseShellExecute = false
-                };
-
-                StartProcess(psi);
+                });
 
             }
             catch (Exception ex)

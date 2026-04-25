@@ -112,12 +112,15 @@ namespace Agent
             private static async Task<bool> OpenApp()
             {
                 var appPath = ConfigManager.Instance.Config.Paths.AppPath;
+                var width = ConfigManager.Instance.Config.SizeOf.WindowWidth;
+                var height = ConfigManager.Instance.Config.SizeOf.WindowHeight;
 
                 try
                 {
                     Process.Start(new ProcessStartInfo()
                     {
                         FileName = appPath,
+                        Arguments= $"-windowed -novid -low -w {width} - h {height}",
                         UseShellExecute = true,
                         WorkingDirectory = System.IO.Path.GetDirectoryName(appPath)
                     });

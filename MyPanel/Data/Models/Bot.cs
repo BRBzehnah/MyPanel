@@ -34,8 +34,6 @@ namespace MyPanel.Data.Models
 
         public List<Drop> Drop { get; set; } = new List<Drop>();    /*Список дропа*/
 
-        public Role Role { get; set; }          /*Указатель роли*/
-
         public Rank Rank { get; set; }          /*Указатель ранга*/
 
 
@@ -51,11 +49,10 @@ namespace MyPanel.Data.Models
             IsActiveTm = model.IsActiveTm;
             IsPrime = model.IsPrime;
             IsFarmed = model.IsFarmed;
-            Role = model.Role;
             Rank = model.Rank;
         }
 
-        public Bot(string email, string login, string password, string emailPassword = null, string restoreCode = null, string maFile = null, bool isActiveTm = false, bool isPrime = false, bool isFarmed = false, Role role = Role.Worker, Rank rank = Rank.None, string tradeLink = null)
+        public Bot(string email, string login, string password, string emailPassword = null, string restoreCode = null, string maFile = null, bool isActiveTm = false, bool isPrime = false, bool isFarmed = false, Rank rank = Rank.None, string tradeLink = null)
         {
             Email = email;
             Login = login;
@@ -67,7 +64,6 @@ namespace MyPanel.Data.Models
             IsActiveTm = isActiveTm;
             IsPrime = isPrime;
             IsFarmed = isFarmed;
-            Role = role;
             Rank = rank;
         }
 
@@ -84,7 +80,6 @@ namespace MyPanel.Data.Models
                 IsActiveTm = this.IsActiveTm,
                 IsPrime = this.IsPrime,
                 IsFarmed = this.IsFarmed,
-                Role = this.Role,
                 Rank = this.Rank
             };
         }

@@ -35,20 +35,18 @@ namespace MyPanel.Models
 
         public bool IsFarmed { get; set; } 
 
-        public Role Role { get; set; }
-
         public Rank Rank { get; set; }
 
         public NamedPipeServerStream? PipeServer { get; set; }
 
-        public Response PipeStatus { get; set; }
+        public bool IsConnected { get; set; } = false;
 
         public string BoxName { get; set; }
 
 
         public BotModel() { }
 
-        public BotModel(string email, string login, string password, string emailPassword = null, string restoreCode = null, string maFile = null, bool isActiveTm = false, bool isPrime = false, bool isFarmed = false, Role role = Role.Worker, Rank rank = Rank.None, string tradeLink = null)
+        public BotModel(string email, string login, string password, string emailPassword = null, string restoreCode = null, string maFile = null, bool isActiveTm = false, bool isPrime = false, bool isFarmed = false, Rank rank = Rank.None, string tradeLink = null)
         {
             Email = email;
             Login = login;
@@ -60,7 +58,6 @@ namespace MyPanel.Models
             IsActiveTm = isActiveTm;
             IsPrime = isPrime;
             IsFarmed = isFarmed;
-            Role = role;
             Rank = rank;
         }
     }

@@ -68,7 +68,6 @@ namespace MyPanel.Services
                 botForUpdate.IsActiveTm = model.IsActiveTm;
                 botForUpdate.IsPrime = model.IsPrime;
                 botForUpdate.RestoreCode = model.RestoreCode;
-                botForUpdate.Role = model.Role;
                 botForUpdate.Rank = model.Rank;
 
                 _db.Bots.Update(botForUpdate);
