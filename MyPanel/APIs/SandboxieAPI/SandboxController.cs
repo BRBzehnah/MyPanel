@@ -84,7 +84,7 @@ namespace MyPanel.APIs.SandboxieAPI
 
             return boxes;
         }
-        private bool WriteConfig(string box)
+        private bool Configurate(string box)
         {
             var settings = new Dictionary<string, string>
             {
@@ -110,20 +110,6 @@ namespace MyPanel.APIs.SandboxieAPI
             };
 
             return settings.All(s => WritePrivateProfileString(box, s.Key, s.Value, _iniPath));
-        }
-        private bool Configurate(string box)
-        {
-            if (WriteConfig(box))
-            {
-                try
-                {
-                    Process.Start(_sbiePath, "/reload").WaitForExit();
-                }
-                catch {Exception ex;}
-
-                return true;
-            }
-            return false;
         }
         
 
