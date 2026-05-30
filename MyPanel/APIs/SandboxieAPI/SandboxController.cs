@@ -14,14 +14,12 @@ namespace MyPanel.APIs.SandboxieAPI
 {
     public class SandboxController
     {
+        #region Win32 API
         [DllImport("kernel32", CharSet = CharSet.Unicode, SetLastError = true)]     //Импорт для взаимодействия с конфиг файлом песочниц
         private static extern bool WritePrivateProfileString(string Section, string Key, string Value, string FilePath);
 
         [DllImport("user32.dll", SetLastError = true)]      //Импорт для взаимодейтсвия с окнами
         internal static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
-
-        [DllImport("user32.dll")]       //Импорт для получения информации о разрешении
-        static extern int GetSystemMetrics(int nIndex);
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]       //Импорт для поиска окна
         static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
@@ -33,8 +31,9 @@ namespace MyPanel.APIs.SandboxieAPI
         static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
 
         public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
+        #endregion
 
-
+        #region Fields
         private readonly string _iniPath = ConfigManager.Instance.Config.Paths.IniPath;
         private readonly string _sbiePath = ConfigManager.Instance.Config.Paths.SandboxiePath;
         private readonly string _appPath = ConfigManager.Instance.Config.Paths.AppPath;
@@ -44,6 +43,7 @@ namespace MyPanel.APIs.SandboxieAPI
         private readonly int _wndHeight = ConfigManager.Instance.Config.SizeOf.WindowHeight;
         private readonly int _screenWidth = ConfigManager.Instance.Config.SizeOf.MonitorWidth;
         private readonly int _screenHeight = ConfigManager.Instance.Config.SizeOf.MonitorHeight;
+        #endregion
 
         public SandboxController()
         {
@@ -53,6 +53,7 @@ namespace MyPanel.APIs.SandboxieAPI
                 MessageBox.Show("ВНИМАНИЕ: Запустите программу от имени администратора");
         }
 
+        #region Test methods
         // Protected constructor for tests/derived classes to skip file/admin checks
         protected SandboxController(bool skipChecks)
         {
@@ -64,6 +65,7 @@ namespace MyPanel.APIs.SandboxieAPI
         {
             return Process.Start(psi);
         }
+        #endregion
 
         private bool IsUserAdministrator()
         {
@@ -86,30 +88,32 @@ namespace MyPanel.APIs.SandboxieAPI
         }
         private bool Configurate(string box)
         {
-            var settings = new Dictionary<string, string>
-            {
-                {"Enabled", "y"},
-                {"AutoDelete", "y"},
-                {"ConfigLevel", "10"},
-                {"OpenPipePath", @"\Device\NamedPipe\bot_*"},
-                {"DropAdminRights", "n"},
-                {"CopyLimitKb", "-1"},
-                {"OpenWinClass", "USO_DirectXWnd"},
-                {"Template", "SkipHook"},
-                {"FuncSkipHook", "NtQueryInformationByName"},
-                {"FuncSkipHook", "LdrLoadDll"},
-                {"OpenFilePath", @"C:\Program Files (x86)\Steam\steamapps\common\*"},
-                {"OpenFilePath", @"C:\Program Files (x86)\Steam\config\*"},
-                {"HideHostProcess", "SandboxieRpcSs.exe"},
-                {"HideHostProcess", "SbieSvc.exe"},
-                {"HideNonSystemProcesses", "y"},
-                {"OpenKeyPath", @"HKEY_LOCAL_MACHINE\Software\NVIDIA Corporation"},
-                {"OpenKeyPath", @"HKEY_LOCAL_MACHINE\Software\AMD"},
-                {"Template", "WindowsLive"},
-                {"Template", "OfficeLicensing"}
-            };
+            //var settings = new Dictionary<string, string>
+            //{
+            //    {"Enabled", "y"},
+            //    {"AutoDelete", "y"},
+            //    {"ConfigLevel", "10"},
+            //    {"OpenPipePath", @"\Device\NamedPipe\bot_*"},
+            //    {"DropAdminRights", "n"},
+            //    {"CopyLimitKb", "-1"},
+            //    {"OpenWinClass", "USO_DirectXWnd"},
+            //    {"Template", "SkipHook"},
+            //    {"FuncSkipHook", "NtQueryInformationByName"},
+            //    {"FuncSkipHook", "LdrLoadDll"},
+            //    {"OpenFilePath", @"C:\Program Files (x86)\Steam\steamapps\common\*"},
+            //    {"OpenFilePath", @"C:\Program Files (x86)\Steam\config\*"},
+            //    {"HideHostProcess", "SandboxieRpcSs.exe"},
+            //    {"HideHostProcess", "SbieSvc.exe"},
+            //    {"HideNonSystemProcesses", "y"},
+            //    {"OpenKeyPath", @"HKEY_LOCAL_MACHINE\Software\NVIDIA Corporation"},
+            //    {"OpenKeyPath", @"HKEY_LOCAL_MACHINE\Software\AMD"},
+            //    {"Template", "WindowsLive"},
+            //    {"Template", "OfficeLicensing"}
+            //};
+            var cfg = ConfigManager.Instance.Config.SanboxConfig;
 
-            return settings.All(s => WritePrivateProfileString(box, s.Key, s.Value, _iniPath));
+            //return settings.All(s => WritePrivateProfileString(box, s.Key, s.Value, _iniPath));
+            return cfg.All(c => WritePrivateProfileString(box, c.Key, c.Value, _iniPath));
         }
         
 
@@ -156,7 +160,7 @@ namespace MyPanel.APIs.SandboxieAPI
 
         public async Task<bool> CreateBox(BotModel bot)
         {
-            string boxName = $"Sandbox_{bot.Id}";
+            string boxName = $"{bot.Id}";
             if (Configurate(boxName))
             {
                 _boxes.Add(boxName);

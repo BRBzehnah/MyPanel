@@ -6,6 +6,10 @@ using Data;
 using MyPanel.Communication;
 using Data.Config;
 using System.Diagnostics;
+using SteamKit2.Internal;
+using Newtonsoft.Json;
+using WindowsInput;
+using WindowsInput.Native;
 
 namespace Agent
 {
@@ -14,6 +18,9 @@ namespace Agent
     {
         class Program
         {
+            private static readonly PixelBot _pixelBot = new PixelBot();
+            private static readonly InputSimulator _inputSim = new InputSimulator();
+
             private static string? GetArgument(string[] args, string key)
             {
                 int index = Array.IndexOf(args, key);
@@ -29,7 +36,20 @@ namespace Agent
                     {
                         case Commands.OpenApp:
                             if (await OpenApp())
-                                await writer.WriteLineAsync(Response.Success.ToString());
+                            {
+                                await writer.WriteLineAsync(Response.NeedAuthData.ToString());  
+                                var authData = JsonConvert.DeserializeObject<AuthDataModel>(await reader.ReadLineAsync());
+                                if (await Login(authData?.Login, authData?.Password))
+                                {
+                                    await writer.WriteLineAsync(Response.NeedGuardCode.ToString());
+                                    var guardCode = await reader.ReadLineAsync();
+                                    Thread.Sleep(2000); //test
+                                    if (await EnterGuardCode(guardCode))
+                                        await writer.WriteLineAsync(Response.Success.ToString());
+                                }
+                                else
+                                    await writer.WriteLineAsync(Response.Failure.ToString());
+                            }
                             else
                                 await writer.WriteLineAsync(Response.Failure.ToString());
                             break;
@@ -96,7 +116,7 @@ namespace Agent
             private static async Task<bool> Handshake(StreamReader reader, StreamWriter writer)
             {
                 await writer.WriteLineAsync(Response.Ready.ToString());
-                
+
                 string verification = await reader.ReadLineAsync();
                 if (verification != null)
                 {
@@ -120,7 +140,7 @@ namespace Agent
                     Process.Start(new ProcessStartInfo()
                     {
                         FileName = appPath,
-                        Arguments= $"-windowed -novid -low -w {width} - h {height}",
+                        Arguments = $"-windowed -novid -low -w {width} - h {height}",
                         UseShellExecute = true,
                         WorkingDirectory = System.IO.Path.GetDirectoryName(appPath)
                     });
@@ -129,6 +149,37 @@ namespace Agent
                 {
                     return false;
                 }
+
+                if (await _pixelBot.WaitForLoginWindow())
+                    return true;
+
+                return false;
+            }
+
+            private static async Task<bool> Login(string login, string password)
+            {
+                if(!_pixelBot.IsLoginWindowPresent())
+                    return false;
+
+                try
+                {
+                    _inputSim.Keyboard.TextEntry(login);
+                    _inputSim.Keyboard.KeyPress(VirtualKeyCode.TAB);
+                    _inputSim.Keyboard.TextEntry(password);
+                    _inputSim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+
+            private static async Task<bool> EnterGuardCode(string code)
+            {
+                _inputSim.Keyboard.TextEntry(code);
+                _inputSim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
                 return true;
             }
         }

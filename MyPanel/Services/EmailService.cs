@@ -14,7 +14,7 @@ namespace MyPanel.Services
         private const string Host = "imap.gmail.com";
         private const int Port = 993;
 
-        private static async Task<string> GetAuthCodeByEmail(string email, string password)
+        public async Task<string> GetAuthCodeByEmail(string email, string password)
         {
             using (var client = new ImapClient())
             {
@@ -30,7 +30,7 @@ namespace MyPanel.Services
                     var inbox = client.Inbox;
                     await inbox.OpenAsync(FolderAccess.ReadWrite);
 
-                    //яИщем непрочитанные письма от Steam за последние 5 минут
+                    //Ищем непрочитанные письма от Steam за последние 5 минут
                     var query = SearchQuery.FromContains("noreply@steampowered.com")
                                 .And(SearchQuery.SubjectContains("Steam Guard"))
                                 .And(SearchQuery.NotSeen);

@@ -11,6 +11,7 @@ namespace Data.Config
     {
         public Paths Paths { get; set; } = new Paths();
         public SizeOf SizeOf { get; set; } = new SizeOf();
+        public List<SanboxConfig> SanboxConfig { get; set; } = new List<SanboxConfig>();
     }
     public class Paths
     {
@@ -28,5 +29,10 @@ namespace Data.Config
         public int WindowHeight { get; set; }
         public int MonitorWidth { get; set; } = GetSystemMetrics(0);
         public int MonitorHeight { get; set; } = GetSystemMetrics(1);
+    }
+    public class SanboxConfig
+    {
+        public string Key { get; set; } = "";
+        public string Value { get; set; } = "";
     }
 }
