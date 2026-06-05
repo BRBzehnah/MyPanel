@@ -12,6 +12,8 @@ namespace MyPanel.Communication
         Failure,
         Ready,
         Connected,
-        Error
+        Error,
+        NeedAuthData,
+        NeedGuardCode
     }
 }

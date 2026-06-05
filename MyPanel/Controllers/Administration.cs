@@ -6,6 +6,7 @@ using MyPanel.Communication;
 using MyPanel.Data;
 using MyPanel.Models;
 using MyPanel.Services;
+using Newtonsoft.Json;
 using SteamKit2.WebUI.Internal;
 using System;
 using System.Collections.Generic;
@@ -23,10 +24,13 @@ namespace MyPanel.Controllers
 {
     public class Administration
     {
+        #region Services and DbContext
         private readonly ApplicationDbContext _db;
         private readonly BotServices _bs;
         private readonly SandboxController _sbc;
         private readonly SteamServices _ss;
+        private readonly EmailService _email;
+        #endregion
         private List<BotModel> Bots { get; set; }
 
         public Administration()
@@ -165,7 +169,17 @@ namespace MyPanel.Controllers
             return false;
         }
 
-        private static async Task CommandHandler(StreamReader reader, StreamWriter writer, BotModel bot)
+        private static string DataToJson(string login, string password)
+        {
+            var data = new AuthDataModel
+            {
+                Login = login,
+                Password = password
+            };
+            return JsonConvert.SerializeObject(data);
+        }
+
+        private async Task CommandHandler(StreamReader reader, StreamWriter writer, BotModel bot)
         {
             // Цикл прослушивания статусов от агента
             while (bot.PipeServer.IsConnected)
@@ -175,7 +189,14 @@ namespace MyPanel.Controllers
                 {
                     switch (rsp)
                     {
-
+                        case Response.NeedAuthData:
+                            var authData = DataToJson(bot.Login, bot.Password);
+                            await writer.WriteLineAsync(authData);
+                            break;
+                        case Response.NeedGuardCode:
+                            var guardCode = await _email.GetAuthCodeByEmail(bot.Email, bot.EmailPassword);
+                            await writer.WriteLineAsync(guardCode);
+                            break;
                     }
                 }
                 else

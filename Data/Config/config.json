@@ -11,5 +11,26 @@
     "MonitorWidth": 0,
     "MonitorHeight": 0
 
-  }
+  },
+  "SanboxConfig": [
+    {"Key": "Enabled", "Value": "y"},
+    {"Key": "AutoDelete", "Value": "y"},
+    {"Key": "ConfigLevel", "Value": "10"},
+    {"Key": "OpenPipePath", "Value": "\\Device\\NamedPipe\\bot_*"},
+    {"Key": "DropAdminRights", "Value": "n"},
+    {"Key": "CopyLimitKb", "Value": "-1"},
+    {"Key": "OpenWinClass", "Value": "USO_DirectXWnd"},
+    {"Key": "Template", "Value": "SkipHook"},
+    {"Key": "FuncSkipHook", "Value": "NtQueryInformationByName"},
+    {"Key": "FuncSkipHook", "Value": "LdrLoadDll"},
+    {"Key": "OpenFilePath", "Value": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\*"},
+    {"Key": "OpenFilePath", "Value": "C:\\Program Files (x86)\\Steam\\config\\*"},
+    {"Key": "HideHostProcess", "Value": "SandboxieRpcSs.exe"},
+    {"Key": "HideHostProcess", "Value": "SbieSvc.exe"},
+    {"Key": "HideNonSystemProcesses", "Value": "y"},
+    {"Key": "OpenKeyPath", "Value": "HKEY_LOCAL_MACHINE\\Software\\NVIDIA Corporation"},
+    {"Key": "OpenKeyPath", "Value": "HKEY_LOCAL_MACHINE\\Software\\AMD"},
+    {"Key": "Template", "Value": "WindowsLive"},
+    {"Key": "Template", "Value": "OfficeLicensing"}
+  ]
 }

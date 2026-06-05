@@ -28,10 +28,10 @@
           }
         }
       },
-      "MailKit/4.15.1": {
+      "MailKit/4.16.0": {
         "type": "package",
         "dependencies": {
-          "MimeKit": "4.15.1"
+          "MimeKit": "4.16.0"
         },
         "compile": {
           "lib/net10.0/MailKit.dll": {
@@ -722,7 +722,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "MimeKit/4.15.1": {
+      "MimeKit/4.16.0": {
         "type": "package",
         "dependencies": {
           "BouncyCastle.Cryptography": "2.6.2"
@@ -1132,10 +1132,10 @@
         "logo.png"
       ]
     },
-    "MailKit/4.15.1": {
-      "sha512": "4mLbqTbH3ctd0NlukHjVQbU3ZnNDuCtB6ttNZDLPZLWMA2Dr31rh/eCSTqOwDojUX8zfDOVaxstMgJTE9PwZNA==",
+    "MailKit/4.16.0": {
+      "sha512": "trJ82DOpAmo8i1jO1vNE+dGn4mPRyeYfy4swRcAGgMJhPoI1Kohf4OFJJf0+YIj4iUxgxPn8W+ht7e7KiYzSjg==",
       "type": "package",
-      "path": "mailkit/4.15.1",
+      "path": "mailkit/4.16.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1172,7 +1172,7 @@
         "lib/netstandard2.1/MailKit.dll.config",
         "lib/netstandard2.1/MailKit.pdb",
         "lib/netstandard2.1/MailKit.xml",
-        "mailkit.4.15.1.nupkg.sha512",
+        "mailkit.4.16.0.nupkg.sha512",
         "mailkit.nuspec"
       ]
     },
@@ -2653,10 +2653,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "MimeKit/4.15.1": {
-      "sha512": "cxCcQhD0zhboFoG136jJuJtQjNRDJ+BxBm3f2vWn+53bff/CRo+K1mAkWjsW4Wuyy5O22F40MdMG2nRzQu1cJw==",
+    "MimeKit/4.16.0": {
+      "sha512": "X0LFxeM4gPRIhODyY/HYS9b+zRZ7y//v59rFzgS6wLxcPuZThnMtNZHtrr0fjLyRRkg3gqJBtvW36XfUzZ7Djw==",
       "type": "package",
-      "path": "mimekit/4.15.1",
+      "path": "mimekit/4.16.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2688,7 +2688,7 @@
         "lib/netstandard2.1/MimeKit.dll.config",
         "lib/netstandard2.1/MimeKit.pdb",
         "lib/netstandard2.1/MimeKit.xml",
-        "mimekit.4.15.1.nupkg.sha512",
+        "mimekit.4.16.0.nupkg.sha512",
         "mimekit.nuspec"
       ]
     },
@@ -3110,13 +3110,13 @@
   "projectFileDependencyGroups": {
     "net10.0-windows7.0": [
       "Data >= 1.0.0",
-      "MailKit >= 4.15.1",
+      "MailKit >= 4.16.0",
       "Microsoft.EntityFrameworkCore >= 9.0.11",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.11",
       "Microsoft.EntityFrameworkCore.Sqlite >= 9.0.11",
       "Microsoft.EntityFrameworkCore.Sqlite.Core >= 9.0.11",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.11",
-      "MimeKit >= 4.15.1",
+      "MimeKit >= 4.16.0",
       "Newtonsoft.Json >= 13.0.4",
       "SteamKit2 >= 3.4.0"
     ]
@@ -3151,6 +3151,7 @@
       },
       "frameworks": {
         "net10.0-windows7.0": {
+          "framework": "net10.0-windows7.0",
           "targetAlias": "net10.0-windows7.0",
           "projectReferences": {
             "C:\\Users\\obvin\\Desktop\\MyPanel\\Data\\Data.csproj": {
@@ -3169,15 +3170,16 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net10.0-windows7.0": {
+        "framework": "net10.0-windows7.0",
         "targetAlias": "net10.0-windows7.0",
         "dependencies": {
           "MailKit": {
             "target": "Package",
-            "version": "[4.15.1, )"
+            "version": "[4.16.0, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -3205,7 +3207,7 @@
           },
           "MimeKit": {
             "target": "Package",
-            "version": "[4.15.1, )"
+            "version": "[4.16.0, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -3235,7 +3237,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.104/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.204/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
