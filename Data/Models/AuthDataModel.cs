@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data
+namespace Data.Models
 {
     public class AuthDataModel
     {

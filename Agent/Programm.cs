@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO.Pipes;
-using Data;
-using MyPanel.Communication;
 using Data.Config;
 using System.Diagnostics;
 using SteamKit2.Internal;
 using Newtonsoft.Json;
 using WindowsInput;
 using WindowsInput.Native;
+using Data.Models;
 
 namespace Agent
 {
