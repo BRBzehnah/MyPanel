@@ -1,8 +1,8 @@
 ﻿using Data;
 using Data.Config;
+using Data.Models;
 using Microsoft.EntityFrameworkCore;
 using MyPanel.APIs.SandboxieAPI;
-using MyPanel.Communication;
 using MyPanel.Data;
 using MyPanel.Models;
 using MyPanel.Services;
@@ -41,7 +41,7 @@ namespace MyPanel.Controllers
             _sbc = new SandboxController();
         }
 
-        public async Task<bool> Registration(string email, string login, string password, string phoneNumber)
+        public async Task<Result> Registration(string email, string login, string password, string phoneNumber)
         {
 
             var bot = new BotModel(email, login, password);
@@ -50,28 +50,27 @@ namespace MyPanel.Controllers
             {
                 bot.MaFile = await _ss.CreateMaFile(bot.Login, bot.Password, phoneNumber);
             }
-            catch 
+            catch (Exception ex)
             {
-                return false;
+                return Result.Failure(new Error(ErrorType.OuterLibraryError, $"Ошибка при создании MaFile: {ex.Message}"));
             }
 
-            if (bot.MaFile is not null)
-            {
-                var rCode = _ss.GetRestoreCode(bot.MaFile);
-                if (rCode is not null)
-                {
-                    bot.RestoreCode = rCode;
-                    _bs.Create(bot);
-                    return true;
-                }
-            }
-            return false;
+            if (bot.MaFile is null)
+                return Result.Failure(new Error(ErrorType.OuterLibraryError, "Не удалось создать MaFile"));
+
+            var rCode = _ss.GetRestoreCode(bot.MaFile);
+
+            if (rCode is null)
+                return Result.Failure(new Error(ErrorType.OuterLibraryError, "Не удалось получить код восстановления"));
+
+            bot.RestoreCode = rCode;
+            return _bs.Create(bot);
         }
 
-        public async Task<bool> RegistrationByEmail(string email, string login, string password, string emailPassword)
+        public async Task<Result> RegistrationByEmail(string email, string login, string password, string emailPassword)
         {
-            var bot = new BotModel(email,login, password, emailPassword);
-            
+            var bot = new BotModel(email, login, password, emailPassword);
+
             return _bs.Create(bot);
         }
 
@@ -94,7 +93,7 @@ namespace MyPanel.Controllers
 
                 string args = $"/box:{bot.BoxName} {agentExePath} --pipe {pipeName}";
 
-                if (await _sbc.RunBox(args))
+                if ((await _sbc.RunBox(args)).IsSuccess)
                 {
                     _ = Task.Run(async () =>
                     {
@@ -131,7 +130,7 @@ namespace MyPanel.Controllers
                 using var reader = new StreamReader(bot.PipeServer);
                 using var writer = new StreamWriter(bot.PipeServer) { AutoFlush = true };
 
-                if (await Handshake(reader, writer))
+                if ((await Handshake(reader, writer)).IsSuccess)
                 {
                     Console.WriteLine("подключено");
                     bot.IsConnected = true;
@@ -150,25 +149,27 @@ namespace MyPanel.Controllers
             }
             finally
             {
-               bot.PipeServer?.Dispose();
+                bot.PipeServer?.Dispose();
             }
         }
 
-        private static async Task<bool> Handshake(StreamReader reader, StreamWriter writer)
+        private static async Task<Result> Handshake(StreamReader reader, StreamWriter writer)
         {
-            string response =  await reader.ReadLineAsync();
-            if (response != null)
-            {
-                if (response == Response.Ready.ToString())
-                {
-                    await writer.WriteLineAsync(Commands.DoConnect.ToString());
-                    if (await reader.ReadLineAsync() == Response.Connected.ToString())
-                        return true;
-                }
-            }
-            return false;
-        }
+            string response = await reader.ReadLineAsync();
+            if (response is null)
+                return Result.Failure(new Error(ErrorType.CommunicationError, "Агент не ответил на приветствие"));
+            if (response != Response.Ready.ToString())
+                return Result.Failure(new Error(ErrorType.CommunicationError, "Агент не готов к подключению"));
 
+            await writer.WriteLineAsync(Commands.DoConnect.ToString());
+
+            if(await reader.ReadLineAsync() != Response.Connected.ToString())
+                return Result.Failure(new Error(ErrorType.CommunicationError, "Агент не подтвердил подключение"));
+
+            return Result.Success();
+
+        }
+        
         private static string DataToJson(string login, string password)
         {
             var data = new AuthDataModel

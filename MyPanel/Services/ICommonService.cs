@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,9 @@ namespace MyPanel.Services
 {
     public interface ICommonService<T>
     {
-        public bool Create(T model);
+        public Result Create(T model);
         public T Read(int id);
-        public bool Update(T model, int id);
-        public bool Delete(int id);
+        public Result Update(T model, int id);
+        public Result Delete(int id);
     }
 }

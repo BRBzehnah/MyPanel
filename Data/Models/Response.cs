@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyPanel.Communication
+namespace Data.Models
 {
     public enum Response
     {
