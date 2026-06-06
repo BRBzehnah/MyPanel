@@ -1,4 +1,6 @@
-﻿using Data.Config;
+﻿using Data;
+using Data.Config;
+using Data.Models;
 using MyPanel.Models;
 using System;
 using System.Collections.Generic;
@@ -88,31 +90,7 @@ namespace MyPanel.APIs.SandboxieAPI
         }
         private bool Configurate(string box)
         {
-            //var settings = new Dictionary<string, string>
-            //{
-            //    {"Enabled", "y"},
-            //    {"AutoDelete", "y"},
-            //    {"ConfigLevel", "10"},
-            //    {"OpenPipePath", @"\Device\NamedPipe\bot_*"},
-            //    {"DropAdminRights", "n"},
-            //    {"CopyLimitKb", "-1"},
-            //    {"OpenWinClass", "USO_DirectXWnd"},
-            //    {"Template", "SkipHook"},
-            //    {"FuncSkipHook", "NtQueryInformationByName"},
-            //    {"FuncSkipHook", "LdrLoadDll"},
-            //    {"OpenFilePath", @"C:\Program Files (x86)\Steam\steamapps\common\*"},
-            //    {"OpenFilePath", @"C:\Program Files (x86)\Steam\config\*"},
-            //    {"HideHostProcess", "SandboxieRpcSs.exe"},
-            //    {"HideHostProcess", "SbieSvc.exe"},
-            //    {"HideNonSystemProcesses", "y"},
-            //    {"OpenKeyPath", @"HKEY_LOCAL_MACHINE\Software\NVIDIA Corporation"},
-            //    {"OpenKeyPath", @"HKEY_LOCAL_MACHINE\Software\AMD"},
-            //    {"Template", "WindowsLive"},
-            //    {"Template", "OfficeLicensing"}
-            //};
             var cfg = ConfigManager.Instance.Config.SanboxConfig;
-
-            //return settings.All(s => WritePrivateProfileString(box, s.Key, s.Value, _iniPath));
             return cfg.All(c => WritePrivateProfileString(box, c.Key, c.Value, _iniPath));
         }
         
@@ -158,19 +136,18 @@ namespace MyPanel.APIs.SandboxieAPI
             return foundHandle;
         }
 
-        public async Task<bool> CreateBox(BotModel bot)
+        public async Task<Result> CreateBox(BotModel bot)
         {
             string boxName = $"{bot.Id}";
-            if (Configurate(boxName))
-            {
-                _boxes.Add(boxName);
-                bot.BoxName = boxName;
-                return true;
-            }
-            return false;
+            if(!Configurate(boxName))
+                return Result.Failure(new Error(ErrorType.SandboxError, "Ошибка конфигурации песочницы"));
+
+            _boxes.Add(boxName);
+            bot.BoxName = boxName;
+            return Result.Success();
         }
 
-        public async Task<bool> RunBox(string args)
+        public async Task<Result> RunBox(string args)
         {
             try
             {
@@ -181,15 +158,13 @@ namespace MyPanel.APIs.SandboxieAPI
                     CreateNoWindow = true,
                     UseShellExecute = false
                 };
-
                 StartProcess(psi);
-
             }
             catch (Exception ex)
             {
-                return false;
+                return Result.Failure(new Error(ErrorType.SystemError, $"Ошибка при запуске песочницы: {ex.Message}"));
             }
-            return true;
+            return Result.Success();
         }
 
         public void Cleanup()

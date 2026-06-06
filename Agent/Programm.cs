@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using WindowsInput;
 using WindowsInput.Native;
 using Data.Models;
+using Data;
 
 namespace Agent
 {
@@ -34,16 +35,16 @@ namespace Agent
                     switch (cmd)
                     {
                         case Commands.OpenApp:
-                            if (await OpenApp())
+                            if ((await OpenApp()).IsSuccess)
                             {
                                 await writer.WriteLineAsync(Response.NeedAuthData.ToString());  
                                 var authData = JsonConvert.DeserializeObject<AuthDataModel>(await reader.ReadLineAsync());
-                                if (await Login(authData?.Login, authData?.Password))
+                                if ((await Login(authData?.Login, authData?.Password)).IsSuccess)
                                 {
                                     await writer.WriteLineAsync(Response.NeedGuardCode.ToString());
                                     var guardCode = await reader.ReadLineAsync();
                                     Thread.Sleep(2000); //test
-                                    if (await EnterGuardCode(guardCode))
+                                    if ((await EnterGuardCode(guardCode)).IsSuccess)
                                         await writer.WriteLineAsync(Response.Success.ToString());
                                 }
                                 else
@@ -83,7 +84,7 @@ namespace Agent
                         using var reader = new StreamReader(client);
                         using var writer = new StreamWriter(client) { AutoFlush = true };
 
-                        if (await Handshake(reader, writer))
+                        if ((await Handshake(reader, writer)).IsSuccess)
                         {
                             Console.WriteLine("[Agent] Совершено рукопожатие");
 
@@ -112,23 +113,22 @@ namespace Agent
                 }
             }
 
-            private static async Task<bool> Handshake(StreamReader reader, StreamWriter writer)
+            private static async Task<Result> Handshake(StreamReader reader, StreamWriter writer)
             {
                 await writer.WriteLineAsync(Response.Ready.ToString());
 
                 string verification = await reader.ReadLineAsync();
-                if (verification != null)
-                {
-                    if (verification == Commands.DoConnect.ToString())
-                    {
-                        await writer.WriteLineAsync(Response.Connected.ToString());
-                        return true;
-                    }
-                }
-                return false;
+                if (verification is null)
+                    return Result.Failure(new Error(ErrorType.CommunicationError, "Панель не ответила на приветствие"));
+                
+                if (verification != Commands.DoConnect.ToString())
+                    return Result.Failure(new Error(ErrorType.CommunicationError, "Панель не подтвердила подключение"));
+
+                await writer.WriteLineAsync(Response.Connected.ToString());
+                return Result.Success();            
             }
 
-            private static async Task<bool> OpenApp()
+            private static async Task<Result> OpenApp()
             {
                 var appPath = ConfigManager.Instance.Config.Paths.AppPath;
                 var width = ConfigManager.Instance.Config.SizeOf.WindowWidth;
@@ -141,24 +141,21 @@ namespace Agent
                         FileName = appPath,
                         Arguments = $"-windowed -novid -low -w {width} - h {height}",
                         UseShellExecute = true,
-                        WorkingDirectory = System.IO.Path.GetDirectoryName(appPath)
+                        WorkingDirectory = Path.GetDirectoryName(appPath)
                     });
                 }
                 catch (Exception ex)
                 {
-                    return false;
+                    return Result.Failure(new Error(ErrorType.SystemError, $"Ошибка при запуске приложения: {ex.Message}"));
                 }
 
-                if (await _pixelBot.WaitForLoginWindow())
-                    return true;
-
-                return false;
+                return await _pixelBot.WaitForLoginWindow();
             }
 
-            private static async Task<bool> Login(string login, string password)
+            private static async Task<Result> Login(string login, string password)
             {
-                if(!_pixelBot.IsLoginWindowPresent())
-                    return false;
+                var result = await _pixelBot.WaitForLoginWindow();
+                if (!result.IsSuccess) return result;
 
                 try
                 {
@@ -167,19 +164,26 @@ namespace Agent
                     _inputSim.Keyboard.TextEntry(password);
                     _inputSim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
 
-                    return true;
+                    return Result.Success();
                 }
                 catch (Exception ex)
                 {
-                    return false;
+                    return Result.Failure(new Error(ErrorType.AgentError, $"Ошибка при входе: {ex.Message}"));
                 }
             }
 
-            private static async Task<bool> EnterGuardCode(string code)
+            private static async Task<Result> EnterGuardCode(string code)
             {
-                _inputSim.Keyboard.TextEntry(code);
-                _inputSim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
-                return true;
+                try
+                {
+                    _inputSim.Keyboard.TextEntry(code);
+                    _inputSim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+                    return Result.Success();
+                }
+                catch (Exception ex)
+                {
+                    return Result.Failure(new Error(ErrorType.AgentError, $"Ошибка при вводе Guard кода: {ex.Message}"));
+                }
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Data;
+using Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -23,19 +25,18 @@ namespace Agent
 
         private readonly Color _targetColor = Color.FromArgb(0, 164, 255); // Цвет кнопки "Войти"
 
-        public bool IsLoginWindowPresent()
+        public async Task<Result> IsLoginWindowPresent()
         {
             IntPtr hWnd = FindWindow(null, "Войти в Steam");
-            if (hWnd == IntPtr.Zero) return false;
+            if (hWnd == IntPtr.Zero) return Result.Failure(new Error(ErrorType.AgentPixelBotError, "Окно 'Войти в Steam' не найдено"));
 
-            if (!GetWindowRect(hWnd, out RECT rect)) return false;
+            if (!GetWindowRect(hWnd, out RECT rect)) return Result.Failure(new Error(ErrorType.AgentPixelBotError, "Не удалось получить размеры окна"));
 
             int width = rect.Right - rect.Left;
             int height = rect.Bottom - rect.Top;
 
             // Если окно свернуто или некорректно
-            if (width <= 0 || height <= 0) return false;
-
+            if (width <= 0 || height <= 0) return Result.Failure(new Error(ErrorType.AgentPixelBotError, "Окно некорректно"));
             using (Bitmap bmp = new Bitmap(1, 1))
             {
                 using (Graphics g = Graphics.FromImage(bmp))
@@ -48,7 +49,9 @@ namespace Agent
                     g.CopyFromScreen(x, y, 0, 0, new Size(1, 1));
                 }
                 Color pixel = bmp.GetPixel(0, 0);
-                return IsColorMatch(pixel, _targetColor);
+                if (IsColorMatch(pixel, _targetColor))
+                    return Result.Success();
+                return Result.Failure(new Error(ErrorType.AgentPixelBotError, "Не удалось верифицировать окно"));
             }
         }
 
@@ -60,17 +63,17 @@ namespace Agent
                    Math.Abs(c1.B - c2.B) < tolerance;
         }
 
-        public async Task<bool> WaitForLoginWindow()
+        public async Task<Result> WaitForLoginWindow()
         {
             //Ждем появления окна минуту
-            DateTime endTime = DateTime.Now.AddSeconds(60);
+            DateTime endTime = DateTime.Now.AddSeconds(60); 
             while (DateTime.Now < endTime)
             {
-                if (IsLoginWindowPresent())
-                    return true;
+                if ((await IsLoginWindowPresent()).IsSuccess)
+                    return Result.Success();
                 await Task.Delay(500);
             }
-            return false;
+            return Result.Failure(new Error(ErrorType.TimedOut, "Время ожидания окна вышло"));
         }
     }
 }

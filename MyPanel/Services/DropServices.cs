@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Data;
+using Data.Models;
+using Microsoft.EntityFrameworkCore;
 using MyPanel.Data;
 using MyPanel.Data.Models;
 using MyPanel.Models;
@@ -18,16 +20,16 @@ namespace MyPanel.Services
             _db = db;
         }
 
-        public bool Create(DropModel model)
+        public Result Create(DropModel model)
         {
-            if (model != null)
-            {
-                var drop = new Drop(model.BotId);
-                _db.Drops.Add(drop);
-                _db.SaveChanges();
-                return true;
-            }
-            return false;
+            if(model == null)
+                return Result.Failure(new Error(ErrorType.ModelIsNull, "Некорректная модель 'drop'"));
+
+            var drop = new Drop(model.BotId);
+            _db.Drops.Add(drop);
+            _db.SaveChanges();
+            return Result.Success();
+
         }
         public DropModel Read(int id)
         {
@@ -36,27 +38,28 @@ namespace MyPanel.Services
                 return drop.ToDto();
             return null;
         }
-        public bool Update(DropModel model, int id)
+        public Result Update(DropModel model, int id)
         {
             var dropForUdate = _db.Drops.FirstOrDefault(d => d.Id == id);
-            if (dropForUdate != null)
-            {
-                dropForUdate.IsSended = model.IsSended;
-                _db.Drops.Update(dropForUdate);
-                _db.SaveChanges();
-            }
-            return false;
+            if(dropForUdate == null)
+                return Result.Failure(new Error(ErrorType.IncorrectId, "Некорректный 'dropId'"));
+
+            dropForUdate.IsSended = model.IsSended;
+            _db.Drops.Update(dropForUdate);
+            _db.SaveChanges();
+            return Result.Success();
+
         }
-        public bool Delete(int id)
+        public Result Delete(int id)
         {
             var drop = _db.Drops.FirstOrDefault(d => d.Id == id);
-            if (drop != null)
-            {
-                _db.Drops.Remove(drop);
-                _db.SaveChanges();
-                return true;
-            }
-            return false;
+            if(drop == null)
+                return Result.Failure(new Error(ErrorType.IncorrectId, "Некорректный 'dropId'"));
+
+            _db.Drops.Remove(drop);
+            _db.SaveChanges();
+            return Result.Success();
+
         }
     }
 }
